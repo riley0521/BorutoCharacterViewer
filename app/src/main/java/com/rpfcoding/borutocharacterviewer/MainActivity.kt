@@ -14,7 +14,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.rpfcoding.borutocharacterviewer.presentation.navigation.SetupNavGraph
 import com.rpfcoding.borutocharacterviewer.ui.theme.BorutoCharacterViewerTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private lateinit var navController: NavHostController
