@@ -7,6 +7,6 @@ import androidx.room.PrimaryKey
 data class HeroRemoteKey(
     @PrimaryKey
     val id: Int,
-    val prevKey: Int?,
-    val nextKey: Int?
+    val previousPage: Int?,
+    val nextPage: Int?
 )
