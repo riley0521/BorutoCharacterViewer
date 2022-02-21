@@ -6,10 +6,12 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.google.accompanist.pager.ExperimentalPagerApi
 import com.rpfcoding.borutocharacterviewer.presentation.screens.splash.SplashScreen
 import com.rpfcoding.borutocharacterviewer.presentation.screens.welcome.WelcomeScreen
 import com.rpfcoding.borutocharacterviewer.util.Constants.DETAILS_ARG_KEY
 
+@ExperimentalPagerApi
 @Composable
 fun SetupNavGraph(navHostController: NavHostController) {
     NavHost(
