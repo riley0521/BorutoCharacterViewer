@@ -1,27 +1,31 @@
 package com.rpfcoding.borutocharacterviewer.presentation.screens.welcome
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.rememberPagerState
+import com.google.accompanist.pager.*
 import com.rpfcoding.borutocharacterviewer.R
 import com.rpfcoding.borutocharacterviewer.domain.model.OnBoardingPage
 import com.rpfcoding.borutocharacterviewer.ui.theme.*
 
+@ExperimentalAnimationApi
 @ExperimentalPagerApi
 @Composable
 fun WelcomeScreen(navController: NavHostController) {
@@ -39,11 +43,28 @@ fun WelcomeScreen(navController: NavHostController) {
             .background(color = MaterialTheme.colors.welcomeScreenBackgroundColor)
     ) {
         HorizontalPager(
+            modifier = Modifier.weight(10f),
             count = pages.size,
             state = pagerState,
             verticalAlignment = Alignment.Top
         ) { position ->
             PagerScreen(onBoardingPage = pages[position])
+        }
+        HorizontalPagerIndicator(
+            modifier = Modifier
+                .weight(1f)
+                .align(Alignment.CenterHorizontally),
+            pagerState = pagerState,
+            activeColor = MaterialTheme.colors.activeIndicatorColor,
+            inactiveColor = MaterialTheme.colors.inactiveIndicatorColor,
+            indicatorWidth = PAGING_INDICATOR_WIDTH,
+            spacing = PAGING_INDICATOR_SPACING
+        )
+        FinishButton(
+            modifier = Modifier.weight(1f),
+            pagerState = pagerState
+        ) {
+
         }
     }
 }
@@ -85,6 +106,38 @@ fun PagerScreen(onBoardingPage: OnBoardingPage) {
     }
 }
 
+@ExperimentalAnimationApi
+@ExperimentalPagerApi
+@Composable
+fun FinishButton(
+    modifier: Modifier,
+    pagerState: PagerState,
+    onClick: () -> Unit
+) {
+    Row(
+        modifier = modifier
+            .padding(horizontal = EXTRA_LARGE_PADDING),
+        verticalAlignment = Alignment.Top,
+        horizontalArrangement = Arrangement.Center
+    ) {
+        AnimatedVisibility(
+            modifier = Modifier.fillMaxWidth(),
+            visible = pagerState.currentPage == 2
+        ) {
+            Button(
+                onClick = onClick,
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = MaterialTheme.colors.buttonBackgroundColor,
+                    contentColor = Color.White
+                )
+            ) {
+                Text(text = stringResource(R.string.btn_finish))
+            }
+        }
+    }
+}
+
+@ExperimentalPagerApi
 @Preview(showBackground = true)
 @Composable
 fun FirstOnBoardingScreenPreview() {
