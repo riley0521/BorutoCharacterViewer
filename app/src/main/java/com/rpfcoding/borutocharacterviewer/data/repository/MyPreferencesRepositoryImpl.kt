@@ -1,4 +1,4 @@
-package com.rpfcoding.borutocharacterviewer.data.pref
+package com.rpfcoding.borutocharacterviewer.data.repository
 
 import android.content.Context
 import androidx.datastore.core.DataStore
