@@ -62,7 +62,8 @@ fun WelcomeScreen(navController: NavHostController) {
         )
         FinishButton(
             modifier = Modifier.weight(1f),
-            pagerState = pagerState
+            pagerState = pagerState,
+            lastPageIndex = pages.size - 1
         ) {
 
         }
@@ -112,6 +113,7 @@ fun PagerScreen(onBoardingPage: OnBoardingPage) {
 fun FinishButton(
     modifier: Modifier,
     pagerState: PagerState,
+    lastPageIndex: Int,
     onClick: () -> Unit
 ) {
     Row(
@@ -122,7 +124,7 @@ fun FinishButton(
     ) {
         AnimatedVisibility(
             modifier = Modifier.fillMaxWidth(),
-            visible = pagerState.currentPage == 2
+            visible = pagerState.currentPage == lastPageIndex
         ) {
             Button(
                 onClick = onClick,
