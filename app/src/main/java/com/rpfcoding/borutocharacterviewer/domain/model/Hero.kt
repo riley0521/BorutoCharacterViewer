@@ -2,7 +2,9 @@ package com.rpfcoding.borutocharacterviewer.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.serialization.Serializable
 
+@Serializable
 @Entity(tableName = "tbl_heroes")
 data class Hero(
     @PrimaryKey
