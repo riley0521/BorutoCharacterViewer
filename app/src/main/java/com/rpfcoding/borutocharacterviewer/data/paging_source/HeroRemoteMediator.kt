@@ -9,8 +9,8 @@ import com.rpfcoding.borutocharacterviewer.data.local.BorutoDatabase
 import com.rpfcoding.borutocharacterviewer.data.remote.BorutoApi
 import com.rpfcoding.borutocharacterviewer.domain.model.Hero
 import com.rpfcoding.borutocharacterviewer.domain.model.HeroRemoteKey
-import com.rpfcoding.borutocharacterviewer.domain.repository.HeroRemoteKeyRepository
-import com.rpfcoding.borutocharacterviewer.domain.repository.HeroRepository
+import com.rpfcoding.borutocharacterviewer.domain.repository.LocalHeroRemoteKeyRepository
+import com.rpfcoding.borutocharacterviewer.domain.repository.LocalHeroRepository
 import java.lang.Exception
 import javax.inject.Inject
 
@@ -18,8 +18,8 @@ import javax.inject.Inject
 class HeroRemoteMediator @Inject constructor(
     private val borutoApi: BorutoApi,
     private val borutoDatabase: BorutoDatabase,
-    private val heroRepository: HeroRepository,
-    private val heroRemoteKeyRepository: HeroRemoteKeyRepository
+    private val localHeroRepository: LocalHeroRepository,
+    private val localHeroRemoteKeyRepository: LocalHeroRemoteKeyRepository
 ) : RemoteMediator<Int, Hero>() {
 
     override suspend fun load(loadType: LoadType, state: PagingState<Int, Hero>): MediatorResult {
@@ -48,8 +48,8 @@ class HeroRemoteMediator @Inject constructor(
             if (response.heroes.isNotEmpty()) {
                 borutoDatabase.withTransaction {
                     if (loadType == LoadType.REFRESH) {
-                        heroRepository.deleteAllHeroes()
-                        heroRemoteKeyRepository.deleteAllRemoteKeys()
+                        localHeroRepository.deleteAllHeroes()
+                        localHeroRemoteKeyRepository.deleteAllRemoteKeys()
                     }
 
                     val prevPage = response.prevPage
@@ -62,8 +62,8 @@ class HeroRemoteMediator @Inject constructor(
                         )
                     }
 
-                    heroRemoteKeyRepository.addAllRemoteKeys(heroRemoteKeys = keys)
-                    heroRepository.addHeroes(heroes = response.heroes)
+                    localHeroRemoteKeyRepository.addAllRemoteKeys(heroRemoteKeys = keys)
+                    localHeroRepository.addHeroes(heroes = response.heroes)
                 }
             }
 
@@ -78,7 +78,7 @@ class HeroRemoteMediator @Inject constructor(
     ): HeroRemoteKey? {
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.id?.let { id ->
-                heroRemoteKeyRepository.getRemoteKey(heroId = id)
+                localHeroRemoteKeyRepository.getRemoteKey(heroId = id)
             }
         }
     }
@@ -87,13 +87,13 @@ class HeroRemoteMediator @Inject constructor(
         state: PagingState<Int, Hero>
     ): HeroRemoteKey? {
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()?.let { hero ->
-            heroRemoteKeyRepository.getRemoteKey(heroId = hero.id)
+            localHeroRemoteKeyRepository.getRemoteKey(heroId = hero.id)
         }
     }
 
     private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, Hero>): HeroRemoteKey? {
         return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()?.let { hero ->
-            heroRemoteKeyRepository.getRemoteKey(heroId = hero.id)
+            localHeroRemoteKeyRepository.getRemoteKey(heroId = hero.id)
         }
     }
 }

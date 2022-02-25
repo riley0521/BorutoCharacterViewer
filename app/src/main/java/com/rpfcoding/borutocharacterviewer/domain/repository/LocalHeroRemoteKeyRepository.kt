@@ -2,7 +2,7 @@ package com.rpfcoding.borutocharacterviewer.domain.repository
 
 import com.rpfcoding.borutocharacterviewer.domain.model.HeroRemoteKey
 
-interface HeroRemoteKeyRepository {
+interface LocalHeroRemoteKeyRepository {
 
     suspend fun getRemoteKey(heroId: Int): HeroRemoteKey?
 

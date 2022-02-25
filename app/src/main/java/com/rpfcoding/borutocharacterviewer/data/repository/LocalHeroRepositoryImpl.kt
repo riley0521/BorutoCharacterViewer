@@ -3,12 +3,12 @@ package com.rpfcoding.borutocharacterviewer.data.repository
 import androidx.paging.PagingSource
 import com.rpfcoding.borutocharacterviewer.data.local.dao.HeroDao
 import com.rpfcoding.borutocharacterviewer.domain.model.Hero
-import com.rpfcoding.borutocharacterviewer.domain.repository.HeroRepository
+import com.rpfcoding.borutocharacterviewer.domain.repository.LocalHeroRepository
 import javax.inject.Inject
 
-class HeroRepositoryImpl @Inject constructor(
+class LocalHeroRepositoryImpl @Inject constructor(
     private val heroDao: HeroDao
-) : HeroRepository {
+) : LocalHeroRepository {
 
     override fun getAllHeroes(): PagingSource<Int, Hero> =
         heroDao.getAllHeroes()

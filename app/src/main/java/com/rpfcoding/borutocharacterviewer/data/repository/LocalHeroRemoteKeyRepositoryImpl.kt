@@ -2,12 +2,12 @@ package com.rpfcoding.borutocharacterviewer.data.repository
 
 import com.rpfcoding.borutocharacterviewer.data.local.dao.HeroRemoteKeyDao
 import com.rpfcoding.borutocharacterviewer.domain.model.HeroRemoteKey
-import com.rpfcoding.borutocharacterviewer.domain.repository.HeroRemoteKeyRepository
+import com.rpfcoding.borutocharacterviewer.domain.repository.LocalHeroRemoteKeyRepository
 import javax.inject.Inject
 
-class HeroRemoteKeyRepositoryImpl @Inject constructor(
+class LocalHeroRemoteKeyRepositoryImpl @Inject constructor(
     private val heroRemoteKeyDao: HeroRemoteKeyDao
-) : HeroRemoteKeyRepository {
+) : LocalHeroRemoteKeyRepository {
 
     override suspend fun getRemoteKey(id: Int): HeroRemoteKey? =
         heroRemoteKeyDao.getRemoteKey(id = id)

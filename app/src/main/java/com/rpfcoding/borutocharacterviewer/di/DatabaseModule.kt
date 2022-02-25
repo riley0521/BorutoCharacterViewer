@@ -5,10 +5,10 @@ import androidx.room.Room
 import com.rpfcoding.borutocharacterviewer.data.local.BorutoDatabase
 import com.rpfcoding.borutocharacterviewer.data.local.dao.HeroDao
 import com.rpfcoding.borutocharacterviewer.data.local.dao.HeroRemoteKeyDao
-import com.rpfcoding.borutocharacterviewer.data.repository.HeroRemoteKeyRepositoryImpl
-import com.rpfcoding.borutocharacterviewer.data.repository.HeroRepositoryImpl
-import com.rpfcoding.borutocharacterviewer.domain.repository.HeroRemoteKeyRepository
-import com.rpfcoding.borutocharacterviewer.domain.repository.HeroRepository
+import com.rpfcoding.borutocharacterviewer.data.repository.LocalHeroRemoteKeyRepositoryImpl
+import com.rpfcoding.borutocharacterviewer.data.repository.LocalHeroRepositoryImpl
+import com.rpfcoding.borutocharacterviewer.domain.repository.LocalHeroRemoteKeyRepository
+import com.rpfcoding.borutocharacterviewer.domain.repository.LocalHeroRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -46,12 +46,12 @@ object DatabaseModule {
     @Singleton
     fun provideHeroRepository(
         heroDao: HeroDao
-    ): HeroRepository = HeroRepositoryImpl(heroDao)
+    ): LocalHeroRepository = LocalHeroRepositoryImpl(heroDao)
 
     @Provides
     @Singleton
     fun provideHeroRemoteKeyRepository(
         heroRemoteKeyDao: HeroRemoteKeyDao
-    ): HeroRemoteKeyRepository = HeroRemoteKeyRepositoryImpl(heroRemoteKeyDao)
+    ): LocalHeroRemoteKeyRepository = LocalHeroRemoteKeyRepositoryImpl(heroRemoteKeyDao)
 
 }

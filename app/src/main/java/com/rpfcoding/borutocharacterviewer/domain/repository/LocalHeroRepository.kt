@@ -3,7 +3,7 @@ package com.rpfcoding.borutocharacterviewer.domain.repository
 import androidx.paging.PagingSource
 import com.rpfcoding.borutocharacterviewer.domain.model.Hero
 
-interface HeroRepository {
+interface LocalHeroRepository {
 
     fun getAllHeroes(): PagingSource<Int, Hero>
 
