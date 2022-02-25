@@ -2,7 +2,6 @@ package com.rpfcoding.borutocharacterviewer.di
 
 import android.content.Context
 import com.rpfcoding.borutocharacterviewer.data.repository.MyPreferencesRepositoryImpl
-import com.rpfcoding.borutocharacterviewer.data.repository.Repository
 import com.rpfcoding.borutocharacterviewer.domain.repository.MyPreferencesRepository
 import com.rpfcoding.borutocharacterviewer.domain.use_cases.on_boarding.OnBoardingUseCases
 import com.rpfcoding.borutocharacterviewer.domain.use_cases.on_boarding.ReadOnBoardingUseCase
@@ -27,11 +26,11 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideOnBoardingUseCases(
-        repository: Repository
+        myPreferencesRepository: MyPreferencesRepository
     ): OnBoardingUseCases {
         return OnBoardingUseCases(
-            readOnBoardingUseCase = ReadOnBoardingUseCase(repository = repository),
-            saveOnBoardingUseCase = SaveOnBoardingUseCase(repository = repository)
+            readOnBoardingUseCase = ReadOnBoardingUseCase(repository = myPreferencesRepository),
+            saveOnBoardingUseCase = SaveOnBoardingUseCase(repository = myPreferencesRepository)
         )
     }
 
