@@ -4,18 +4,21 @@ import android.widget.Toast
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.currentCompositionLocalContext
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import androidx.paging.compose.collectAsLazyPagingItems
 
 @Composable
 fun HomeScreen(
-    navController: NavHostController
+    navController: NavHostController,
+    homeViewModel: HomeViewModel = hiltViewModel()
 ) {
+
+    val allHeroes = homeViewModel.heroes.collectAsLazyPagingItems()
 
     Scaffold(
         topBar = {
-            HomeTopBar {
-
-            }
+            HomeTopBar(onSearchClicked = {})
         }
     ) {
 
