@@ -22,6 +22,10 @@ import com.rpfcoding.borutocharacterviewer.R
 import com.rpfcoding.borutocharacterviewer.ui.theme.EXTRA_SMALL_PADDING
 import com.rpfcoding.borutocharacterviewer.ui.theme.LightGray
 import com.rpfcoding.borutocharacterviewer.ui.theme.StarColor
+import com.rpfcoding.borutocharacterviewer.util.Constants.EMPTY_STAR_KEY
+import com.rpfcoding.borutocharacterviewer.util.Constants.FILLED_STAR_KEY
+import com.rpfcoding.borutocharacterviewer.util.Constants.HALF_FILLED_STAR_KEY
+import com.rpfcoding.borutocharacterviewer.util.Constants.RATING_WIDGET_TAG
 
 @Composable
 fun RatingWidget(
@@ -45,7 +49,7 @@ fun RatingWidget(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(space = spaceBetween)
     ) {
-        result["filledStars"]?.let {
+        result[FILLED_STAR_KEY]?.let {
             repeat(it) {
                 FilledStar(
                     starPath = starPath,
@@ -54,7 +58,7 @@ fun RatingWidget(
                 )
             }
         }
-        result["halfFilledStars"]?.let {
+        result[HALF_FILLED_STAR_KEY]?.let {
             repeat(it) {
                 HalfFilledStar(
                     starPath = starPath,
@@ -63,7 +67,7 @@ fun RatingWidget(
                 )
             }
         }
-        result["emptyStars"]?.let {
+        result[EMPTY_STAR_KEY]?.let {
             repeat(it) {
                 EmptyStar(
                     starPath = starPath,
@@ -206,16 +210,16 @@ fun calculateStars(rating: Double): Map<String, Int> {
                 halfFilledStars = 0
             }
         } else {
-            Log.d("RatingWidget", "Invalid rating number.")
+            Log.d(RATING_WIDGET_TAG, "Invalid rating number.")
         }
 
     }
 
     emptyStars = maxStars - (filledStars + halfFilledStars)
     return mapOf(
-        "filledStars" to filledStars,
-        "halfFilledStars" to halfFilledStars,
-        "emptyStars" to emptyStars
+        FILLED_STAR_KEY to filledStars,
+        HALF_FILLED_STAR_KEY to halfFilledStars,
+        EMPTY_STAR_KEY to emptyStars
     )
 }
 

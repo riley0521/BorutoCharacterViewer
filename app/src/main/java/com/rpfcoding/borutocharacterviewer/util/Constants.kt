@@ -11,4 +11,9 @@ object Constants {
 
     const val ITEMS_PER_PAGE = 3
 
+    const val RATING_WIDGET_TAG = "RatingWidget"
+    const val FILLED_STAR_KEY = "filledStars"
+    const val HALF_FILLED_STAR_KEY = "halfFilledStars"
+    const val EMPTY_STAR_KEY = "emptyStars"
+
 }
