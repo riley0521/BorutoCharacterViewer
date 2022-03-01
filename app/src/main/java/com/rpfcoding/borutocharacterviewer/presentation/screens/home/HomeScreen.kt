@@ -1,16 +1,14 @@
 package com.rpfcoding.borutocharacterviewer.presentation.screens.home
 
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.paging.compose.collectAsLazyPagingItems
+import coil.annotation.ExperimentalCoilApi
 import com.rpfcoding.borutocharacterviewer.presentation.common.ListContent
-import com.rpfcoding.borutocharacterviewer.presentation.components.RatingWidget
-import com.rpfcoding.borutocharacterviewer.ui.theme.LARGE_PADDING
 
+@ExperimentalCoilApi
 @Composable
 fun HomeScreen(
     navController: NavHostController,

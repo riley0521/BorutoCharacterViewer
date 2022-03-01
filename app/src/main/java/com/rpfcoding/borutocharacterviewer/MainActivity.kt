@@ -13,11 +13,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import coil.annotation.ExperimentalCoilApi
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.rpfcoding.borutocharacterviewer.presentation.navigation.SetupNavGraph
 import com.rpfcoding.borutocharacterviewer.ui.theme.BorutoCharacterViewerTheme
 import dagger.hilt.android.AndroidEntryPoint
 
+@ExperimentalCoilApi
 @ExperimentalAnimationApi
 @ExperimentalPagerApi
 @AndroidEntryPoint
