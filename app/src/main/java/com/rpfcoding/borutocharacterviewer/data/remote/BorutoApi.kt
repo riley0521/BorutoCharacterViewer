@@ -1,6 +1,6 @@
 package com.rpfcoding.borutocharacterviewer.data.remote
 
-import com.rpfcoding.borutocharacterviewer.domain.model.ApiResponse
+import com.rpfcoding.borutocharacterviewer.data.remote.dto.ApiResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

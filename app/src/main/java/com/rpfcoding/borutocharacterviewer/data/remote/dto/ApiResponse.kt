@@ -1,4 +1,4 @@
-package com.rpfcoding.borutocharacterviewer.domain.model
+package com.rpfcoding.borutocharacterviewer.data.remote.dto
 
 import com.rpfcoding.borutocharacterviewer.data.remote.dto.HeroDto
 import kotlinx.serialization.Serializable
@@ -9,5 +9,6 @@ data class ApiResponse(
     val message: String? = null,
     val prevPage: Int? = null,
     val nextPage: Int? = null,
-    val heroes: List<HeroDto> = emptyList()
+    val heroes: List<HeroDto> = emptyList(),
+    val lastUpdated: Long? = null
 )
