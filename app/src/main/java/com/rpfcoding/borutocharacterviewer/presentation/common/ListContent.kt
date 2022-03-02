@@ -17,7 +17,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
@@ -28,8 +27,8 @@ import androidx.paging.compose.items
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.rpfcoding.borutocharacterviewer.R
-import com.rpfcoding.borutocharacterviewer.domain.model.Hero
-import com.rpfcoding.borutocharacterviewer.presentation.components.RatingWidget
+import com.rpfcoding.borutocharacterviewer.data.local.entity.HeroEntity
+import com.rpfcoding.borutocharacterviewer.data.remote.dto.ShinobiRecordDto
 import com.rpfcoding.borutocharacterviewer.presentation.components.ShimmerEffect
 import com.rpfcoding.borutocharacterviewer.presentation.navigation.Screen
 import com.rpfcoding.borutocharacterviewer.ui.theme.*
@@ -39,7 +38,7 @@ import com.rpfcoding.borutocharacterviewer.util.Constants.BASE_URL
 @Composable
 fun ListContent(
     navController: NavHostController,
-    heroes: LazyPagingItems<Hero>
+    heroes: LazyPagingItems<HeroEntity>
 ) {
 
     val result = handlePagingResult(heroes = heroes)
@@ -68,7 +67,7 @@ fun ListContent(
 
 @Composable
 fun handlePagingResult(
-    heroes: LazyPagingItems<Hero>
+    heroes: LazyPagingItems<HeroEntity>
 ): Boolean {
 
     heroes.apply {
@@ -98,7 +97,7 @@ fun handlePagingResult(
 @Composable
 fun HeroItem(
     navController: NavHostController,
-    hero: Hero
+    hero: HeroEntity
 ) {
     
     val painter = rememberImagePainter(data = "$BASE_URL${hero.image}") {
@@ -138,36 +137,36 @@ fun HeroItem(
                     .padding(all = MEDIUM_PADDING)
             ) {
                 Text(
-                    text = hero.name,
+                    text = "${hero.englishName} (${hero.japaneseName})",
                     color = MaterialTheme.colors.topAppBarContentColor,
                     fontSize = MaterialTheme.typography.h5.fontSize,
                     fontWeight = FontWeight.Bold,
-                    maxLines = 1,
+                    maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
                     text = hero.about,
                     color = Color.White.copy(alpha = ContentAlpha.medium),
                     fontSize = MaterialTheme.typography.subtitle1.fontSize,
-                    maxLines = 3,
+                    maxLines = 4,
                     overflow = TextOverflow.Ellipsis
                 )
-                Row(
-                    modifier = Modifier
-                        .padding(top = SMALL_PADDING),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    RatingWidget(
-                        modifier = Modifier
-                            .padding(end = SMALL_PADDING),
-                        rating = hero.rating
-                    )
-                    Text(
-                        text = "(${hero.rating})",
-                        textAlign = TextAlign.Center,
-                        color = Color.White.copy(alpha = ContentAlpha.medium)
-                    )
-                }
+//                Row(
+//                    modifier = Modifier
+//                        .padding(top = SMALL_PADDING),
+//                    verticalAlignment = Alignment.CenterVertically
+//                ) {
+//                    RatingWidget(
+//                        modifier = Modifier
+//                            .padding(end = SMALL_PADDING),
+//                        rating = hero.rating
+//                    )
+//                    Text(
+//                        text = "(${hero.rating})",
+//                        textAlign = TextAlign.Center,
+//                        color = Color.White.copy(alpha = ContentAlpha.medium)
+//                    )
+//                }
             }
         }
     }
@@ -179,30 +178,22 @@ fun HeroItem(
 fun HeroItemPreview() {
     HeroItem(
         navController = rememberNavController(),
-        hero = Hero(
+        hero = HeroEntity(
             id = 1,
-            name = "John",
+            englishName = "Sasuke Uchiha",
+            japaneseName = "うちはサスケ",
             image = "error",
             about = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            rating = 3.6,
-            power = 50,
+            status = "Alive",
+            gender = "Male",
+            age = 35,
             month = "January",
-            day = "05",
-            family = listOf(
-                "Nanay",
-                "Tatay",
-                "Gusto ko Tinapay"
-            ),
-            abilities = listOf(
-                "Ability 1",
-                "Ability 2",
-                "Ability 3"
-            ),
-            natureTypes = listOf(
-                "Nature 1",
-                "Nature 2",
-                "Nature 3"
-            )
+            day = "5th",
+            abilities = emptyList(),
+            heightBasedOnAge = emptyList(),
+            species = emptyList(),
+            family = emptyList(),
+            shinobiRecord = ShinobiRecordDto()
         )
     )
 }
@@ -213,30 +204,22 @@ fun HeroItemPreview() {
 fun HeroItemDarkPreview() {
     HeroItem(
         navController = rememberNavController(),
-        hero = Hero(
+        hero = HeroEntity(
             id = 1,
-            name = "John",
+            englishName = "Sasuke Uchiha",
+            japaneseName = "うちはサスケ",
             image = "error",
             about = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            rating = 3.6,
-            power = 50,
+            status = "Alive",
+            gender = "Male",
+            age = 35,
             month = "January",
-            day = "05",
-            family = listOf(
-                "Nanay",
-                "Tatay",
-                "Gusto ko Tinapay"
-            ),
-            abilities = listOf(
-                "Ability 1",
-                "Ability 2",
-                "Ability 3"
-            ),
-            natureTypes = listOf(
-                "Nature 1",
-                "Nature 2",
-                "Nature 3"
-            )
+            day = "5th",
+            abilities = emptyList(),
+            heightBasedOnAge = emptyList(),
+            species = emptyList(),
+            family = emptyList(),
+            shinobiRecord = ShinobiRecordDto()
         )
     )
 }

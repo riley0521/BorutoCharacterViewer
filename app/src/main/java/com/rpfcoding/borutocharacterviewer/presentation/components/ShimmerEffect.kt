@@ -65,35 +65,35 @@ fun ShimmerItem(alpha: Float) {
             Surface(
                 modifier = Modifier
                     .alpha(alpha = alpha)
-                    .fillMaxWidth(0.5f)
+                    .fillMaxWidth(0.8f)
                     .height(NAME_PLACEHOLDER_HEIGHT),
                 color = if(isSystemInDarkTheme()) ShimmerDarkGray else ShimmerMediumGray,
                 shape = RoundedCornerShape(size = SMALL_PADDING)
             ) {}
             Spacer(modifier = Modifier.padding(all = SMALL_PADDING))
-            for(i in 3 downTo 1) {
+            for(i in 5 downTo 1) {
                 Surface(
                     modifier = Modifier
                         .alpha(alpha = alpha)
-                        .fillMaxWidth((i * 0.3f))
+                        .fillMaxWidth((i * 0.2f))
                         .height(ABOUT_PLACEHOLDER_HEIGHT),
                     color = if(isSystemInDarkTheme()) ShimmerDarkGray else ShimmerMediumGray,
                     shape = RoundedCornerShape(size = SMALL_PADDING)
                 ) {}
                 Spacer(modifier = Modifier.padding(all = EXTRA_SMALL_PADDING))
             }
-            Row(modifier = Modifier.fillMaxWidth()) {
-                repeat(5) {
-                    Surface(
-                        modifier = Modifier
-                            .alpha(alpha = alpha)
-                            .size(RATING_PLACEHOLDER_HEIGHT),
-                        color = if(isSystemInDarkTheme()) ShimmerDarkGray else ShimmerMediumGray,
-                        shape = RoundedCornerShape(size = EXTRA_SMALL_PADDING)
-                    ) {}
-                    Spacer(modifier = Modifier.padding(all = EXTRA_SMALL_PADDING))
-                }
-            }
+//            Row(modifier = Modifier.fillMaxWidth()) {
+//                repeat(5) {
+//                    Surface(
+//                        modifier = Modifier
+//                            .alpha(alpha = alpha)
+//                            .size(RATING_PLACEHOLDER_HEIGHT),
+//                        color = if(isSystemInDarkTheme()) ShimmerDarkGray else ShimmerMediumGray,
+//                        shape = RoundedCornerShape(size = EXTRA_SMALL_PADDING)
+//                    ) {}
+//                    Spacer(modifier = Modifier.padding(all = EXTRA_SMALL_PADDING))
+//                }
+//            }
         }
     }
 }

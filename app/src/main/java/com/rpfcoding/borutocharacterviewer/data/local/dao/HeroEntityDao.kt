@@ -5,19 +5,19 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
-import com.rpfcoding.borutocharacterviewer.domain.model.Hero
+import com.rpfcoding.borutocharacterviewer.data.local.entity.HeroEntity
 
 @Dao
-interface HeroDao {
+interface HeroEntityDao {
 
     @Query("SELECT * FROM tbl_heroes ORDER BY id ASC")
-    fun getAllHeroes(): PagingSource<Int, Hero>
+    fun getAllHeroes(): PagingSource<Int, HeroEntity>
 
     @Query("SELECT * FROM tbl_heroes WHERE id = :heroId")
-    fun getSelectedHero(heroId: Int): Hero
+    fun getSelectedHero(heroId: Int): HeroEntity
 
     @Insert(onConflict = REPLACE)
-    suspend fun addHeroes(heroes: List<Hero>)
+    suspend fun addHeroes(heroes: List<HeroEntity>)
 
     @Query("DELETE FROM tbl_heroes")
     suspend fun deleteAllHeroes()

@@ -3,7 +3,7 @@ package com.rpfcoding.borutocharacterviewer.di
 import android.content.Context
 import androidx.room.Room
 import com.rpfcoding.borutocharacterviewer.data.local.BorutoDatabase
-import com.rpfcoding.borutocharacterviewer.data.local.dao.HeroDao
+import com.rpfcoding.borutocharacterviewer.data.local.dao.HeroEntityDao
 import com.rpfcoding.borutocharacterviewer.data.local.dao.HeroRemoteKeyDao
 import com.rpfcoding.borutocharacterviewer.data.repository.LocalHeroRemoteKeyRepositoryImpl
 import com.rpfcoding.borutocharacterviewer.data.repository.LocalHeroRepositoryImpl
@@ -34,7 +34,7 @@ object DatabaseModule {
     @Singleton
     fun provideHeroDao(
         db: BorutoDatabase
-    ) = db.heroDao()
+    ) = db.heroEntityDao()
 
     @Provides
     @Singleton
@@ -45,8 +45,8 @@ object DatabaseModule {
     @Provides
     @Singleton
     fun provideHeroRepository(
-        heroDao: HeroDao
-    ): LocalHeroRepository = LocalHeroRepositoryImpl(heroDao)
+        heroEntityDao: HeroEntityDao
+    ): LocalHeroRepository = LocalHeroRepositoryImpl(heroEntityDao)
 
     @Provides
     @Singleton

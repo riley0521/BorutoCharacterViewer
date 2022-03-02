@@ -6,8 +6,8 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.rpfcoding.borutocharacterviewer.data.local.BorutoDatabase
+import com.rpfcoding.borutocharacterviewer.data.local.entity.HeroEntity
 import com.rpfcoding.borutocharacterviewer.data.remote.BorutoApi
-import com.rpfcoding.borutocharacterviewer.domain.model.Hero
 import com.rpfcoding.borutocharacterviewer.domain.model.HeroRemoteKey
 import com.rpfcoding.borutocharacterviewer.domain.repository.LocalHeroRemoteKeyRepository
 import com.rpfcoding.borutocharacterviewer.domain.repository.LocalHeroRepository
@@ -20,9 +20,9 @@ class HeroRemoteMediator @Inject constructor(
     private val borutoDatabase: BorutoDatabase,
     private val localHeroRepository: LocalHeroRepository,
     private val localHeroRemoteKeyRepository: LocalHeroRemoteKeyRepository
-) : RemoteMediator<Int, Hero>() {
+) : RemoteMediator<Int, HeroEntity>() {
 
-    override suspend fun load(loadType: LoadType, state: PagingState<Int, Hero>): MediatorResult {
+    override suspend fun load(loadType: LoadType, state: PagingState<Int, HeroEntity>): MediatorResult {
         return try {
 
             val page: Int = when(loadType) {
@@ -63,7 +63,7 @@ class HeroRemoteMediator @Inject constructor(
                     }
 
                     localHeroRemoteKeyRepository.addAllRemoteKeys(heroRemoteKeys = keys)
-                    localHeroRepository.addHeroes(heroes = response.heroes)
+                    localHeroRepository.addHeroes(heroes = response.heroes.map { it.toHeroEntity() })
                 }
             }
 
@@ -74,7 +74,7 @@ class HeroRemoteMediator @Inject constructor(
     }
 
     private suspend fun getRemoteKeyClosesToCurrentPosition(
-        state: PagingState<Int, Hero>
+        state: PagingState<Int, HeroEntity>
     ): HeroRemoteKey? {
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.id?.let { id ->
@@ -84,14 +84,14 @@ class HeroRemoteMediator @Inject constructor(
     }
 
     private suspend fun getRemoteKeyForFirstItem(
-        state: PagingState<Int, Hero>
+        state: PagingState<Int, HeroEntity>
     ): HeroRemoteKey? {
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()?.let { hero ->
             localHeroRemoteKeyRepository.getRemoteKey(heroId = hero.id)
         }
     }
 
-    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, Hero>): HeroRemoteKey? {
+    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, HeroEntity>): HeroRemoteKey? {
         return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()?.let { hero ->
             localHeroRemoteKeyRepository.getRemoteKey(heroId = hero.id)
         }
