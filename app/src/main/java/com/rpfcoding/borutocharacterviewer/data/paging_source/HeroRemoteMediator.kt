@@ -24,14 +24,19 @@ class HeroRemoteMediator @Inject constructor(
 
     @SuppressLint("NewApi")
     override suspend fun initialize(): InitializeAction {
+
+        // Current time based on the time of the android OS
         val currentTime = System.currentTimeMillis()
+
+        // Current time based on the server time when the first set of data is fetched.
         val lastUpdated = localHeroRemoteKeyRepository.getRemoteKey(heroId = 1)?.lastUpdated ?: 0L
 
         // 24 hours is 1440 minutes
         val cacheTimeoutInMinutes = 1440
 
-        // This is milliseconds divide 1000 to get seconds and
-        // divide 60 to get minutes
+        // (currentTime - lastUpdated) will return milliseconds.
+        // Then, divide 1000 to get seconds.
+        // Then, divide 60 to get minutes
         val diffInMinutes = (currentTime - lastUpdated) / 1000 / 60
 
         // Compare diffInMinutes and cacheTimeoutInMinutes
