@@ -1,6 +1,5 @@
 package com.rpfcoding.borutocharacterviewer.data.paging_source
 
-import android.annotation.SuppressLint
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -22,7 +21,6 @@ class HeroRemoteMediator @Inject constructor(
     private val localHeroRemoteKeyRepository: LocalHeroRemoteKeyRepository
 ) : RemoteMediator<Int, HeroEntity>() {
 
-    @SuppressLint("NewApi")
     override suspend fun initialize(): InitializeAction {
 
         // Current time based on the time of the android OS
