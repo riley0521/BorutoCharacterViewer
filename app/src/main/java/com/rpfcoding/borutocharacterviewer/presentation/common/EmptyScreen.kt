@@ -24,13 +24,15 @@ import com.rpfcoding.borutocharacterviewer.ui.theme.DarkGray
 import com.rpfcoding.borutocharacterviewer.ui.theme.LightGray
 import com.rpfcoding.borutocharacterviewer.ui.theme.NETWORK_ERROR_ICON_HEIGHT
 import com.rpfcoding.borutocharacterviewer.ui.theme.SMALL_PADDING
+import java.net.ConnectException
+import java.net.SocketTimeoutException
 
 @Composable
 fun EmptyScreen(
     error: LoadState.Error
 ) {
     val message by remember {
-        mutableStateOf(parseErrorMessage(message = error.toString()))
+        mutableStateOf(parseErrorMessage(error = error))
     }
 
     val icon by remember {
@@ -88,12 +90,12 @@ fun EmptyContent(
     }
 }
 
-fun parseErrorMessage(message: String): String {
-    return when {
-        message.contains("SocketTimeoutException") -> {
+fun parseErrorMessage(error: LoadState.Error): String {
+    return when (error.error) {
+        is SocketTimeoutException -> {
             "Server Unavailable."
         }
-        message.contains("ConnectException") -> {
+        is ConnectException -> {
             "Internet Unavailable."
         }
         else -> {
@@ -105,23 +107,23 @@ fun parseErrorMessage(message: String): String {
 @Preview(showBackground = true)
 @Composable
 fun EmptyScreenServerUnavailablePreview() {
-    EmptyContent(message = parseErrorMessage("SocketTimeoutException"))
+    EmptyContent(message = parseErrorMessage(LoadState.Error(error = SocketTimeoutException())))
 }
 
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun EmptyScreenServerUnavailableDarkPreview() {
-    EmptyContent(message = parseErrorMessage("SocketTimeoutException"))
+    EmptyContent(message = parseErrorMessage(LoadState.Error(error = SocketTimeoutException())))
 }
 
 @Preview(showBackground = true)
 @Composable
 fun EmptyScreenInternetUnavailablePreview() {
-    EmptyContent(message = parseErrorMessage("ConnectException"))
+    EmptyContent(message = parseErrorMessage(LoadState.Error(error = ConnectException())))
 }
 
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun EmptyScreenInternetUnavailableDarkPreview() {
-    EmptyContent(message = parseErrorMessage("ConnectException"))
+    EmptyContent(message = parseErrorMessage(LoadState.Error(error = ConnectException())))
 }

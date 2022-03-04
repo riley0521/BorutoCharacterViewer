@@ -10,6 +10,7 @@ import androidx.navigation.navArgument
 import coil.annotation.ExperimentalCoilApi
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.rpfcoding.borutocharacterviewer.presentation.screens.home.HomeScreen
+import com.rpfcoding.borutocharacterviewer.presentation.screens.search.SearchScreen
 import com.rpfcoding.borutocharacterviewer.presentation.screens.splash.SplashScreen
 import com.rpfcoding.borutocharacterviewer.presentation.screens.welcome.WelcomeScreen
 import com.rpfcoding.borutocharacterviewer.util.Constants.DETAILS_ARG_KEY
@@ -43,7 +44,7 @@ fun SetupNavGraph(navHostController: NavHostController) {
 
         }
         composable(route = Screen.Search.route) {
-
+            SearchScreen()
         }
     }
 }
