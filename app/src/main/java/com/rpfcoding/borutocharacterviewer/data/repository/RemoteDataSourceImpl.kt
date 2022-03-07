@@ -4,6 +4,7 @@ import androidx.paging.*
 import com.rpfcoding.borutocharacterviewer.data.local.BorutoDatabase
 import com.rpfcoding.borutocharacterviewer.data.local.entity.HeroEntity
 import com.rpfcoding.borutocharacterviewer.data.paging_source.HeroRemoteMediator
+import com.rpfcoding.borutocharacterviewer.data.paging_source.SearchHeroesSource
 import com.rpfcoding.borutocharacterviewer.data.remote.BorutoApi
 import com.rpfcoding.borutocharacterviewer.domain.repository.LocalHeroRemoteKeyRepository
 import com.rpfcoding.borutocharacterviewer.domain.repository.LocalHeroRepository
@@ -33,7 +34,15 @@ class RemoteDataSourceImpl(
         ).flow
     }
 
-    override fun searchHeroes(): Flow<PagingData<HeroEntity>> {
-        TODO("Not yet implemented")
+    override fun searchHeroes(query: String): Flow<PagingData<HeroEntity>> {
+        return Pager(
+            config = PagingConfig(pageSize = ITEMS_PER_PAGE),
+            pagingSourceFactory = {
+                SearchHeroesSource(
+                    borutoApi = borutoApi,
+                    query = query
+                )
+            }
+        ).flow
     }
 }

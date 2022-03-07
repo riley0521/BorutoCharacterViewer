@@ -8,6 +8,6 @@ interface RemoteDataSource {
 
     fun getAllHeroes(): Flow<PagingData<HeroEntity>>
 
-    fun searchHeroes(): Flow<PagingData<HeroEntity>>
+    fun searchHeroes(query: String): Flow<PagingData<HeroEntity>>
 
 }
