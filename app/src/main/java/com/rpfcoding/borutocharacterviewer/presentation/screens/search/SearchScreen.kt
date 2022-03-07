@@ -20,9 +20,7 @@ fun SearchScreen(
                 text = searchQuery,
                 onTextChange = searchViewModel::updateSearchQuery,
                 onSearchClicked = {},
-                onCloseClicked = {
-                    navController.popBackStack()
-                }
+                onCloseClicked = navController::popBackStack
             )
         }
     ) {

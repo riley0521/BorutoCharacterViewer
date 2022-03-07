@@ -5,7 +5,6 @@ import com.rpfcoding.borutocharacterviewer.data.repository.MyPreferencesReposito
 import com.rpfcoding.borutocharacterviewer.domain.repository.MyPreferencesRepository
 import com.rpfcoding.borutocharacterviewer.domain.repository.RemoteDataSource
 import com.rpfcoding.borutocharacterviewer.domain.use_cases.heroes.GetAllHeroesUseCase
-import com.rpfcoding.borutocharacterviewer.domain.use_cases.heroes.HeroesUseCases
 import com.rpfcoding.borutocharacterviewer.domain.use_cases.on_boarding.OnBoardingUseCases
 import com.rpfcoding.borutocharacterviewer.domain.use_cases.on_boarding.ReadOnBoardingUseCase
 import com.rpfcoding.borutocharacterviewer.domain.use_cases.on_boarding.SaveOnBoardingUseCase
@@ -41,9 +40,9 @@ object RepositoryModule {
     @Singleton
     fun provideHeroesUseCases(
         remoteDataSource: RemoteDataSource
-    ): HeroesUseCases {
-        return HeroesUseCases(
-            getAllHeroesUseCase = GetAllHeroesUseCase(repository = remoteDataSource)
+    ): GetAllHeroesUseCase {
+        return GetAllHeroesUseCase(
+            repository = remoteDataSource
         )
     }
 
