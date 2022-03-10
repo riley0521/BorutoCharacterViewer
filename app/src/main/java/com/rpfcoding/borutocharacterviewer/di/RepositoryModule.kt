@@ -2,9 +2,11 @@ package com.rpfcoding.borutocharacterviewer.di
 
 import android.content.Context
 import com.rpfcoding.borutocharacterviewer.data.repository.MyPreferencesRepositoryImpl
+import com.rpfcoding.borutocharacterviewer.domain.repository.LocalHeroRepository
 import com.rpfcoding.borutocharacterviewer.domain.repository.MyPreferencesRepository
 import com.rpfcoding.borutocharacterviewer.domain.repository.RemoteDataSource
 import com.rpfcoding.borutocharacterviewer.domain.use_cases.heroes.GetAllHeroesUseCase
+import com.rpfcoding.borutocharacterviewer.domain.use_cases.heroes.GetSelectedHeroUseCase
 import com.rpfcoding.borutocharacterviewer.domain.use_cases.heroes.SearchHeroesUseCase
 import com.rpfcoding.borutocharacterviewer.domain.use_cases.on_boarding.OnBoardingUseCases
 import com.rpfcoding.borutocharacterviewer.domain.use_cases.on_boarding.ReadOnBoardingUseCase
@@ -54,6 +56,16 @@ object RepositoryModule {
     ): SearchHeroesUseCase {
         return SearchHeroesUseCase(
             repository = remoteDataSource
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetSelectedHeroUseCase(
+        repository: LocalHeroRepository
+    ): GetSelectedHeroUseCase {
+        return GetSelectedHeroUseCase(
+            repository = repository
         )
     }
 
