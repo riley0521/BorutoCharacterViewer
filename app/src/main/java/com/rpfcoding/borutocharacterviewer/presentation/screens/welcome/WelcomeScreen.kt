@@ -20,13 +20,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.ViewModelStore
 import androidx.navigation.NavHostController
 import com.google.accompanist.pager.*
 import com.rpfcoding.borutocharacterviewer.R
 import com.rpfcoding.borutocharacterviewer.domain.model.OnBoardingPage
-import com.rpfcoding.borutocharacterviewer.presentation.navigation.Screen
-import com.rpfcoding.borutocharacterviewer.ui.theme.*
+import com.rpfcoding.borutocharacterviewer.presentation.util.Screen
+import com.rpfcoding.borutocharacterviewer.presentation.theme.*
 
 @ExperimentalAnimationApi
 @ExperimentalPagerApi

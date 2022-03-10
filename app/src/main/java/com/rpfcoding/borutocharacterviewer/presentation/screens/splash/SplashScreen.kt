@@ -20,9 +20,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.rpfcoding.borutocharacterviewer.R
-import com.rpfcoding.borutocharacterviewer.presentation.navigation.Screen
-import com.rpfcoding.borutocharacterviewer.ui.theme.Purple500
-import com.rpfcoding.borutocharacterviewer.ui.theme.Purple700
+import com.rpfcoding.borutocharacterviewer.presentation.util.Screen
+import com.rpfcoding.borutocharacterviewer.presentation.theme.Purple500
+import com.rpfcoding.borutocharacterviewer.presentation.theme.Purple700
 
 @Composable
 fun SplashScreen(

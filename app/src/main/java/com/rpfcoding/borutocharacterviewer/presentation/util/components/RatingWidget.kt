@@ -1,4 +1,4 @@
-package com.rpfcoding.borutocharacterviewer.presentation.components
+package com.rpfcoding.borutocharacterviewer.presentation.util.components
 
 import android.util.Log
 import androidx.compose.foundation.Canvas
@@ -19,9 +19,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.rpfcoding.borutocharacterviewer.R
-import com.rpfcoding.borutocharacterviewer.ui.theme.EXTRA_SMALL_PADDING
-import com.rpfcoding.borutocharacterviewer.ui.theme.LightGray
-import com.rpfcoding.borutocharacterviewer.ui.theme.StarColor
+import com.rpfcoding.borutocharacterviewer.presentation.theme.EXTRA_SMALL_PADDING
+import com.rpfcoding.borutocharacterviewer.presentation.theme.LightGray
+import com.rpfcoding.borutocharacterviewer.presentation.theme.StarColor
 import com.rpfcoding.borutocharacterviewer.util.Constants.EMPTY_STAR_KEY
 import com.rpfcoding.borutocharacterviewer.util.Constants.FILLED_STAR_KEY
 import com.rpfcoding.borutocharacterviewer.util.Constants.HALF_FILLED_STAR_KEY

@@ -1,4 +1,4 @@
-package com.rpfcoding.borutocharacterviewer.ui.theme
+package com.rpfcoding.borutocharacterviewer.presentation.theme
 
 import androidx.compose.ui.unit.dp
 
@@ -16,5 +16,6 @@ val TOP_APP_BAR_HEIGHT = 56.dp
 val HERO_ITEM_HEIGHT = 400.dp
 val NAME_PLACEHOLDER_HEIGHT = 30.dp
 val ABOUT_PLACEHOLDER_HEIGHT = 18.dp
-val RATING_PLACEHOLDER_HEIGHT = 20.dp
 val NETWORK_ERROR_ICON_HEIGHT = 120.dp
+
+val INFO_BOX_ICON_SIZE = 32.dp

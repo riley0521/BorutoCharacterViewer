@@ -1,4 +1,4 @@
-package com.rpfcoding.borutocharacterviewer.presentation.components
+package com.rpfcoding.borutocharacterviewer.presentation.util.components
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.animation.core.*
@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.rpfcoding.borutocharacterviewer.ui.theme.*
+import com.rpfcoding.borutocharacterviewer.presentation.theme.*
 
 @Composable
 fun ShimmerEffect() {

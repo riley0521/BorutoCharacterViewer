@@ -1,4 +1,4 @@
-package com.rpfcoding.borutocharacterviewer.presentation.common
+package com.rpfcoding.borutocharacterviewer.presentation.util.common
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.annotation.DrawableRes
@@ -26,10 +26,10 @@ import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.rpfcoding.borutocharacterviewer.R
 import com.rpfcoding.borutocharacterviewer.data.local.entity.HeroEntity
-import com.rpfcoding.borutocharacterviewer.ui.theme.DarkGray
-import com.rpfcoding.borutocharacterviewer.ui.theme.LightGray
-import com.rpfcoding.borutocharacterviewer.ui.theme.NETWORK_ERROR_ICON_HEIGHT
-import com.rpfcoding.borutocharacterviewer.ui.theme.SMALL_PADDING
+import com.rpfcoding.borutocharacterviewer.presentation.theme.DarkGray
+import com.rpfcoding.borutocharacterviewer.presentation.theme.LightGray
+import com.rpfcoding.borutocharacterviewer.presentation.theme.NETWORK_ERROR_ICON_HEIGHT
+import com.rpfcoding.borutocharacterviewer.presentation.theme.SMALL_PADDING
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 

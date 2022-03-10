@@ -7,7 +7,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.annotation.ExperimentalCoilApi
-import com.rpfcoding.borutocharacterviewer.presentation.common.ListContent
+import com.rpfcoding.borutocharacterviewer.presentation.util.common.ListContent
 
 @ExperimentalCoilApi
 @Composable

@@ -1,4 +1,4 @@
-package com.rpfcoding.borutocharacterviewer.presentation.common
+package com.rpfcoding.borutocharacterviewer.presentation.util.common
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
@@ -29,9 +29,9 @@ import coil.compose.rememberImagePainter
 import com.rpfcoding.borutocharacterviewer.R
 import com.rpfcoding.borutocharacterviewer.data.local.entity.HeroEntity
 import com.rpfcoding.borutocharacterviewer.data.remote.dto.ShinobiRecordDto
-import com.rpfcoding.borutocharacterviewer.presentation.components.ShimmerEffect
-import com.rpfcoding.borutocharacterviewer.presentation.navigation.Screen
-import com.rpfcoding.borutocharacterviewer.ui.theme.*
+import com.rpfcoding.borutocharacterviewer.presentation.util.components.ShimmerEffect
+import com.rpfcoding.borutocharacterviewer.presentation.util.Screen
+import com.rpfcoding.borutocharacterviewer.presentation.theme.*
 import com.rpfcoding.borutocharacterviewer.util.Constants.BASE_URL
 
 @ExperimentalCoilApi

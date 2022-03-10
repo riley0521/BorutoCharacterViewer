@@ -8,8 +8,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.rpfcoding.borutocharacterviewer.R
-import com.rpfcoding.borutocharacterviewer.ui.theme.topAppBarBackgroundColor
-import com.rpfcoding.borutocharacterviewer.ui.theme.topAppBarContentColor
+import com.rpfcoding.borutocharacterviewer.presentation.theme.topAppBarBackgroundColor
+import com.rpfcoding.borutocharacterviewer.presentation.theme.topAppBarContentColor
 
 @Composable
 fun HomeTopBar(

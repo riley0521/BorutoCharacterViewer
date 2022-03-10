@@ -17,9 +17,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import com.rpfcoding.borutocharacterviewer.R
-import com.rpfcoding.borutocharacterviewer.ui.theme.TOP_APP_BAR_HEIGHT
-import com.rpfcoding.borutocharacterviewer.ui.theme.topAppBarBackgroundColor
-import com.rpfcoding.borutocharacterviewer.ui.theme.topAppBarContentColor
+import com.rpfcoding.borutocharacterviewer.presentation.theme.TOP_APP_BAR_HEIGHT
+import com.rpfcoding.borutocharacterviewer.presentation.theme.topAppBarBackgroundColor
+import com.rpfcoding.borutocharacterviewer.presentation.theme.topAppBarContentColor
 
 @Composable
 fun SearchTopBar(
