@@ -11,6 +11,8 @@ import com.rpfcoding.borutocharacterviewer.domain.use_cases.heroes.GetSelectedHe
 import com.rpfcoding.borutocharacterviewer.util.Constants.DETAILS_ARG_KEY
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,8 +22,8 @@ class DetailsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val _selectedHero = mutableStateOf<HeroEntity?>(null)
-    val selectedHero: State<HeroEntity?> = _selectedHero
+    private val _selectedHero:MutableStateFlow<HeroEntity?> = MutableStateFlow(null)
+    val selectedHero: StateFlow<HeroEntity?> = _selectedHero
 
     init {
         viewModelScope.launch(Dispatchers.IO) {

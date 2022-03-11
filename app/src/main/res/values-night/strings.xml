@@ -11,4 +11,11 @@
     <string name="network_error_icon">Network Error Icon</string>
     <string name="close_icon">Close Icon</string>
     <string name="info_icon">Info Icon</string>
+    <string name="birthday">Birthday</string>
+    <string name="age">Age</string>
+    <string name="gender">Gender</string>
+    <string name="about">About</string>
+    <string name="family">Family</string>
+    <string name="height_based_on_age">Height Based On Age</string>
+    <string name="abilities">Abilities</string>
 </resources>

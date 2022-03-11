@@ -1,6 +1,7 @@
 package com.rpfcoding.borutocharacterviewer.presentation.util
 
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -16,6 +17,7 @@ import com.rpfcoding.borutocharacterviewer.presentation.screens.splash.SplashScr
 import com.rpfcoding.borutocharacterviewer.presentation.screens.welcome.WelcomeScreen
 import com.rpfcoding.borutocharacterviewer.util.Constants.DETAILS_ARG_KEY
 
+@ExperimentalMaterialApi
 @ExperimentalCoilApi
 @ExperimentalAnimationApi
 @ExperimentalPagerApi

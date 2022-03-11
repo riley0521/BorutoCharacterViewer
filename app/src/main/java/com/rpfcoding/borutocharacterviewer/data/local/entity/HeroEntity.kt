@@ -17,9 +17,9 @@ data class HeroEntity(
     val age: Int,
     val month: String,
     val day: String,
-    val abilities: List<String>,
-    val heightBasedOnAge: List<String>,
-    val species: List<String>,
-    val family: List<String>,
-    val shinobiRecord: ShinobiRecordDto
+    val abilities: List<String> = listOf(),
+    val heightBasedOnAge: List<String> = listOf(),
+    val species: List<String> = listOf(),
+    val family: List<String> = listOf(),
+    val shinobiRecord: ShinobiRecordDto = ShinobiRecordDto()
 )

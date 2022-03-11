@@ -18,24 +18,35 @@ import com.rpfcoding.borutocharacterviewer.presentation.theme.titleColor
 @Composable
 fun OrderedList(
     title: String,
-    items: List<String>,
+    items: List<String> = emptyList(),
     textColor: Color
 ) {
 
     Column() {
-        Text(
-            modifier = Modifier.padding(bottom = SMALL_PADDING),
-            text = title,
-            color = textColor,
-            fontSize = MaterialTheme.typography.subtitle1.fontSize,
-            fontWeight = FontWeight.Bold
-        )
-        items.forEachIndexed { index, item ->
+        if(items.isNotEmpty()) {
             Text(
-                modifier = Modifier.alpha(ContentAlpha.medium),
-                text = "${index + 1}. $item",
+                modifier = Modifier.padding(bottom = SMALL_PADDING),
+                text = title,
                 color = textColor,
-                fontSize = MaterialTheme.typography.body1.fontSize,
+                fontSize = MaterialTheme.typography.subtitle1.fontSize,
+                fontWeight = FontWeight.Bold
+            )
+
+            items.forEachIndexed { index, item ->
+                Text(
+                    modifier = Modifier.alpha(ContentAlpha.medium),
+                    text = "${index + 1}. $item",
+                    color = textColor,
+                    fontSize = MaterialTheme.typography.body1.fontSize,
+                )
+            }
+        } else {
+            Text(
+                modifier = Modifier.padding(bottom = SMALL_PADDING),
+                text = "$title (No available information)",
+                color = textColor,
+                fontSize = MaterialTheme.typography.subtitle1.fontSize,
+                fontWeight = FontWeight.Bold
             )
         }
     }

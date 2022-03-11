@@ -145,7 +145,7 @@ fun HeroItem(
                     .padding(all = MEDIUM_PADDING)
             ) {
                 Text(
-                    text = "${hero.englishName} (${hero.japaneseName})",
+                    text = "${hero.englishName}\n(${hero.japaneseName})",
                     color = MaterialTheme.colors.topAppBarContentColor,
                     fontSize = MaterialTheme.typography.h5.fontSize,
                     fontWeight = FontWeight.Bold,

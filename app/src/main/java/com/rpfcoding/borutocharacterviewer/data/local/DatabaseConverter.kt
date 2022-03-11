@@ -12,7 +12,11 @@ class DatabaseConverter {
 
     @TypeConverter
     fun convertListToString(list: List<String>): String {
-        return list.joinToString(separator = separator)
+        return if(list.isNotEmpty()) {
+            list.joinToString(separator = separator)
+        } else {
+            ""
+        }
     }
 
     @TypeConverter
