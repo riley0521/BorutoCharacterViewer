@@ -29,9 +29,9 @@ import coil.compose.rememberImagePainter
 import com.rpfcoding.borutocharacterviewer.R
 import com.rpfcoding.borutocharacterviewer.data.local.entity.HeroEntity
 import com.rpfcoding.borutocharacterviewer.data.remote.dto.ShinobiRecordDto
-import com.rpfcoding.borutocharacterviewer.presentation.util.components.ShimmerEffect
-import com.rpfcoding.borutocharacterviewer.presentation.util.Screen
 import com.rpfcoding.borutocharacterviewer.presentation.theme.*
+import com.rpfcoding.borutocharacterviewer.presentation.util.Screen
+import com.rpfcoding.borutocharacterviewer.presentation.util.components.ShimmerEffect
 import com.rpfcoding.borutocharacterviewer.util.Constants.BASE_URL
 
 @ExperimentalCoilApi
@@ -43,7 +43,7 @@ fun ListContent(
 
     val result = handlePagingResult(heroes = heroes)
 
-    if(result) {
+    if (result) {
         LazyColumn(
             contentPadding = PaddingValues(all = SMALL_PADDING),
             verticalArrangement = Arrangement.spacedBy(space = SMALL_PADDING)
@@ -98,7 +98,6 @@ fun handlePagingResult(
             else -> true
         }
     }
-
 }
 
 @ExperimentalCoilApi
@@ -107,12 +106,12 @@ fun HeroItem(
     navController: NavHostController,
     hero: HeroEntity
 ) {
-    
+
     val painter = rememberImagePainter(data = "$BASE_URL${hero.image}") {
         placeholder(R.drawable.ic_placeholder)
         error(R.drawable.ic_placeholder)
     }
-    
+
     Box(
         modifier = Modifier
             .height(HERO_ITEM_HEIGHT)
@@ -156,7 +155,7 @@ fun HeroItem(
                     text = hero.about,
                     color = Color.White.copy(alpha = ContentAlpha.medium),
                     fontSize = MaterialTheme.typography.subtitle1.fontSize,
-                    maxLines = 4,
+                    maxLines = 3,
                     overflow = TextOverflow.Ellipsis
                 )
 //                Row(

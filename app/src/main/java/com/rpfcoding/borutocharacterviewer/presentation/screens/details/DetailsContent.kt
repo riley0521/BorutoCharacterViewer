@@ -1,28 +1,35 @@
 package com.rpfcoding.borutocharacterviewer.presentation.screens.details
 
 import android.util.Log
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
+import coil.annotation.ExperimentalCoilApi
+import coil.compose.rememberImagePainter
 import com.rpfcoding.borutocharacterviewer.R
 import com.rpfcoding.borutocharacterviewer.data.local.entity.HeroEntity
 import com.rpfcoding.borutocharacterviewer.data.remote.dto.ShinobiRecordDto
 import com.rpfcoding.borutocharacterviewer.presentation.theme.*
 import com.rpfcoding.borutocharacterviewer.presentation.util.components.InfoBox
 import com.rpfcoding.borutocharacterviewer.presentation.util.components.OrderedList
+import com.rpfcoding.borutocharacterviewer.util.Constants.BASE_URL
 
+@ExperimentalCoilApi
 @ExperimentalMaterialApi
 @Composable
 fun DetailsContent(
@@ -40,9 +47,65 @@ fun DetailsContent(
         sheetContent = {
             selectedHero?.let { BottomSheetContent(selectedHero = it) }
         },
-        content = {}
+        content = {
+            selectedHero?.let {
+                BackgroundContent(
+                    heroImage = it.image,
+                    backgroundColor = MaterialTheme.colors.surface,
+                    onCloseClick = {
+                        navController.popBackStack()
+                    }
+                )
+            }
+        }
     )
+}
 
+@ExperimentalCoilApi
+@Composable
+fun BackgroundContent(
+    heroImage: String,
+    imageFraction: Float = 1f,
+    backgroundColor: Color = MaterialTheme.colors.surface,
+    onCloseClick: () -> Unit = {}
+) {
+
+    val imageUrl = "$BASE_URL$heroImage"
+    val painter = rememberImagePainter(imageUrl) {
+        error(R.drawable.ic_placeholder)
+    }
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(backgroundColor)
+    ) {
+        Image(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(imageFraction),
+            painter = painter,
+            contentDescription = stringResource(id = R.string.hero_image),
+            contentScale = ContentScale.Crop
+        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.End
+        ) {
+            IconButton(
+                modifier = Modifier.padding(SMALL_PADDING),
+                onClick = onCloseClick
+            ) {
+                Icon(
+                    modifier = Modifier.size(INFO_BOX_ICON_SIZE),
+                    imageVector = Icons.Default.Close,
+                    contentDescription = stringResource(R.string.close_icon),
+                    tint = Color.White
+                )
+            }
+        }
+    }
 }
 
 @Composable
@@ -130,7 +193,7 @@ fun BottomSheetContent(
             fontSize = MaterialTheme.typography.body1.fontSize
         )
 
-        if(selectedHero.family.isNotEmpty()) {
+        if (selectedHero.family.isNotEmpty()) {
             OrderedList(
                 title = stringResource(R.string.family),
                 items = selectedHero.family,
@@ -141,7 +204,7 @@ fun BottomSheetContent(
 
         Log.d("BottomSheet", selectedHero.heightBasedOnAge.toString())
 
-        if(selectedHero.heightBasedOnAge.isNotEmpty()) {
+        if (selectedHero.heightBasedOnAge.isNotEmpty()) {
             OrderedList(
                 title = stringResource(R.string.height_based_on_age),
                 items = selectedHero.heightBasedOnAge,
@@ -150,7 +213,7 @@ fun BottomSheetContent(
             Spacer(modifier = Modifier.height(SMALL_PADDING))
         }
 
-        if(selectedHero.abilities.isNotEmpty()) {
+        if (selectedHero.abilities.isNotEmpty()) {
             OrderedList(
                 title = stringResource(R.string.abilities),
                 items = selectedHero.abilities,
@@ -158,11 +221,8 @@ fun BottomSheetContent(
             )
             Spacer(modifier = Modifier.height(SMALL_PADDING))
         }
-
     }
-
 }
-
 
 @Preview
 @Composable
