@@ -17,6 +17,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import coil.annotation.ExperimentalCoilApi
@@ -28,6 +29,27 @@ import com.rpfcoding.borutocharacterviewer.presentation.theme.*
 import com.rpfcoding.borutocharacterviewer.presentation.util.components.InfoBox
 import com.rpfcoding.borutocharacterviewer.presentation.util.components.OrderedList
 import com.rpfcoding.borutocharacterviewer.util.Constants.BASE_URL
+import com.rpfcoding.borutocharacterviewer.util.Constants.MIN_BACKGROUND_IMAGE_HEIGHT
+
+@ExperimentalMaterialApi
+val BottomSheetScaffoldState.currentSheetFraction: Float
+    get() {
+        val fraction = bottomSheetState.progress.fraction
+        val targetValue = bottomSheetState.targetValue
+        val currentValue = bottomSheetState.currentValue
+
+        Log.d("Fraction", fraction.toString())
+        Log.d("Fraction Target", targetValue.toString())
+        Log.d("Fraction Current", currentValue.toString())
+
+        return when {
+            currentValue == BottomSheetValue.Collapsed && targetValue == BottomSheetValue.Collapsed -> 1f
+            currentValue == BottomSheetValue.Expanded && targetValue == BottomSheetValue.Expanded -> 0f
+            currentValue == BottomSheetValue.Collapsed && targetValue == BottomSheetValue.Expanded -> 1f - fraction
+            currentValue == BottomSheetValue.Expanded && targetValue == BottomSheetValue.Collapsed -> 0f + fraction
+            else -> fraction
+        }
+    }
 
 @ExperimentalCoilApi
 @ExperimentalMaterialApi
@@ -41,6 +63,8 @@ fun DetailsContent(
         bottomSheetState = rememberBottomSheetState(initialValue = BottomSheetValue.Collapsed)
     )
 
+    val currentSheetFraction = scaffoldState.currentSheetFraction
+
     BottomSheetScaffold(
         scaffoldState = scaffoldState,
         sheetPeekHeight = BOTTOM_SHEET_PEEK_HEIGHT,
@@ -51,6 +75,7 @@ fun DetailsContent(
             selectedHero?.let {
                 BackgroundContent(
                     heroImage = it.image,
+                    imageFraction = currentSheetFraction,
                     backgroundColor = MaterialTheme.colors.surface,
                     onCloseClick = {
                         navController.popBackStack()
@@ -83,7 +108,8 @@ fun BackgroundContent(
         Image(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(imageFraction),
+                .fillMaxHeight(fraction = imageFraction + MIN_BACKGROUND_IMAGE_HEIGHT)
+                .align(Alignment.TopStart),
             painter = painter,
             contentDescription = stringResource(id = R.string.hero_image),
             contentScale = ContentScale.Crop
@@ -119,6 +145,7 @@ fun BottomSheetContent(
     Column(
         modifier = Modifier
             .background(sheetBackgroundColor)
+            .heightIn(min = BOTTOM_SHEET_PEEK_HEIGHT, max = BOTTOM_SHEET_MAX_HEIGHT)
             .verticalScroll(rememberScrollState())
             .padding(all = LARGE_PADDING)
     ) {
@@ -190,7 +217,8 @@ fun BottomSheetContent(
                 .padding(bottom = MEDIUM_PADDING),
             text = selectedHero.about,
             color = contentColor,
-            fontSize = MaterialTheme.typography.body1.fontSize
+            fontSize = MaterialTheme.typography.body1.fontSize,
+            textAlign = TextAlign.Justify
         )
 
         if (selectedHero.family.isNotEmpty()) {
