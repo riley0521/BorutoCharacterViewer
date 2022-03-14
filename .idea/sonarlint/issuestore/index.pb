@@ -1,8 +1,6 @@
 
 Ç
 Rapp/src/main/java/com/rpfcoding/borutocharacterviewer/presentation/theme/Dimens.kt,3\e\3eca6c45ddaaf829466a977b8b87f814770ef254
-é
-^app/src/main/java/com/rpfcoding/borutocharacterviewer/data/paging_source/HeroRemoteMediator.kt,c\2\c2aa4b52cf364fcb03555495e321669a6bbdc140
 ç
 ]app/src/main/java/com/rpfcoding/borutocharacterviewer/presentation/util/components/InfoBox.kt,4\0\40c70b4a40fd2ff42140ded140ab46641ef2f812
 ~
@@ -11,14 +9,10 @@ Napp/src/main/java/com/rpfcoding/borutocharacterviewer/util/PaletteGenerator.kt
 ]app/src/main/java/com/rpfcoding/borutocharacterviewer/presentation/util/common/ListContent.kt,4\1\41f64c17d52c5d46e58f68423687ac56eedfd0bd
 é
 ^app/src/main/java/com/rpfcoding/borutocharacterviewer/domain/repository/LocalHeroRepository.kt,1\7\17ff65b93afbbbc4ccbd6835bd1ea06cb0aeb454
-z
-Japp/src/main/java/com/rpfcoding/borutocharacterviewer/di/DatabaseModule.kt,7\8\784558c381adff9a20952ae7c7c25acfa3f82b42
 Ö
 Uapp/src/main/java/com/rpfcoding/borutocharacterviewer/data/local/dao/HeroEntityDao.kt,b\1\b1268fb79cec9f8d61e005ca10066ddd7286380a
 â
 Yapp/src/main/java/com/rpfcoding/borutocharacterviewer/data/remote/dto/ShinobiRecordDto.kt,e\e\eeb0d92b73b0271c17a080cd4a91a335a6a54099
-ê
-`app/src/main/java/com/rpfcoding/borutocharacterviewer/data/repository/LocalHeroRepositoryImpl.kt,b\d\bd87c187713bc5fe5b31797e6aa9b6c545ac7e5b
 ñ
 fapp/src/main/java/com/rpfcoding/borutocharacterviewer/presentation/screens/details/DetailsViewModel.kt,2\e\2ebb1bfdbc22109a8d5a2c7d7794e506667199c9
 Å
@@ -37,7 +31,5 @@ Uapp/src/main/java/com/rpfcoding/borutocharacterviewer/data/local/entity/HeroEnt
 Lapp/src/main/java/com/rpfcoding/borutocharacterviewer/di/RepositoryModule.kt,6\3\636ec75d7ca59bbbdd4ef3f8e5ae11f8458b12b1
 Ä
 Papp/src/main/java/com/rpfcoding/borutocharacterviewer/data/remote/dto/HeroDto.kt,c\c\cce5ab482f4e3d283050c4aeb9fa73e519c97771
-é
-^app/src/main/java/com/rpfcoding/borutocharacterviewer/data/paging_source/SearchHeroesSource.kt,e\a\ea016b56209b571f46d5cbf47a0ebd64aa65a5f3
 w
 Gapp/src/main/java/com/rpfcoding/borutocharacterviewer/util/Constants.kt,9\f\9fd94b60463152838c9ac782e414992d5a6a07a6
