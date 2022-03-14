@@ -80,7 +80,7 @@ fun SearchWidget(
             trailingIcon = {
                 IconButton(
                     onClick = {
-                        if(text.isNotEmpty()) {
+                        if (text.isNotEmpty()) {
                             onTextChange("")
                         } else {
                             onCloseClicked()

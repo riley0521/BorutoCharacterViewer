@@ -9,10 +9,14 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import coil.annotation.ExperimentalCoilApi
 import com.google.accompanist.pager.ExperimentalPagerApi
-import com.rpfcoding.borutocharacterviewer.presentation.util.SetupNavGraph
 import com.rpfcoding.borutocharacterviewer.presentation.theme.BorutoCharacterViewerTheme
+import com.rpfcoding.borutocharacterviewer.presentation.util.SetupNavGraph
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.InternalCoroutinesApi
 
+@ExperimentalCoroutinesApi
+@InternalCoroutinesApi
 @ExperimentalMaterialApi
 @ExperimentalCoilApi
 @ExperimentalAnimationApi
@@ -29,8 +33,6 @@ class MainActivity : ComponentActivity() {
 
                 navController = rememberNavController()
                 SetupNavGraph(navHostController = navController)
-
-
             }
         }
     }

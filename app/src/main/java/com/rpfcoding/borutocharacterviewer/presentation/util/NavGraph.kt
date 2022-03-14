@@ -16,7 +16,11 @@ import com.rpfcoding.borutocharacterviewer.presentation.screens.search.SearchScr
 import com.rpfcoding.borutocharacterviewer.presentation.screens.splash.SplashScreen
 import com.rpfcoding.borutocharacterviewer.presentation.screens.welcome.WelcomeScreen
 import com.rpfcoding.borutocharacterviewer.util.Constants.DETAILS_ARG_KEY
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.InternalCoroutinesApi
 
+@ExperimentalCoroutinesApi
+@InternalCoroutinesApi
 @ExperimentalMaterialApi
 @ExperimentalCoilApi
 @ExperimentalAnimationApi
