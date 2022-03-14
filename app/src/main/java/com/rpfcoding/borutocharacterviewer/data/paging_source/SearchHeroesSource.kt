@@ -4,7 +4,6 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.rpfcoding.borutocharacterviewer.data.local.entity.HeroEntity
 import com.rpfcoding.borutocharacterviewer.data.remote.BorutoApi
-import com.rpfcoding.borutocharacterviewer.data.remote.dto.HeroDto
 import javax.inject.Inject
 
 class SearchHeroesSource @Inject constructor(
@@ -18,7 +17,7 @@ class SearchHeroesSource @Inject constructor(
             val apiResponse = borutoApi.searchHeroes(name = query)
             val heroes = apiResponse.heroes.map { it.toHeroEntity() }
 
-            if(heroes.isNotEmpty()) {
+            if (heroes.isNotEmpty()) {
                 LoadResult.Page(
                     data = heroes,
                     prevKey = apiResponse.prevPage,
@@ -31,7 +30,6 @@ class SearchHeroesSource @Inject constructor(
                     nextKey = null
                 )
             }
-
         } catch (e: Exception) {
             LoadResult.Error(
                 throwable = e

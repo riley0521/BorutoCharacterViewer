@@ -4,7 +4,6 @@ import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.rpfcoding.borutocharacterviewer.data.remote.dto.ShinobiRecordDto
-import java.lang.reflect.Type
 
 class DatabaseConverter {
 
@@ -12,7 +11,7 @@ class DatabaseConverter {
 
     @TypeConverter
     fun convertListToString(list: List<String>): String {
-        return if(list.isNotEmpty()) {
+        return if (list.isNotEmpty()) {
             list.joinToString(separator = separator)
         } else {
             ""
@@ -33,7 +32,7 @@ class DatabaseConverter {
     fun convertJsonToShinobiRecord(record: String): ShinobiRecordDto {
         return Gson().fromJson(
             record,
-            object : TypeToken<ShinobiRecordDto>(){}.type
+            object : TypeToken<ShinobiRecordDto>() {}.type
         )
     }
 }

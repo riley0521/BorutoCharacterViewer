@@ -60,12 +60,8 @@ fun SearchScreen(
     }
 
     LaunchedEffect(key1 = connection) {
-        if (connection == ConnectionState.Unavailable) {
-            delay(200L)
-            isToastShown = true
-        } else {
-            isToastShown = false
-        }
+        delay(200L)
+        isToastShown = connection == ConnectionState.Unavailable
     }
 
     Scaffold(

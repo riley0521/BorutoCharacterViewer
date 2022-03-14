@@ -1,6 +1,5 @@
 package com.rpfcoding.borutocharacterviewer.data.remote.dto
 
-import com.rpfcoding.borutocharacterviewer.data.remote.dto.HeroDto
 import kotlinx.serialization.Serializable
 
 @Serializable

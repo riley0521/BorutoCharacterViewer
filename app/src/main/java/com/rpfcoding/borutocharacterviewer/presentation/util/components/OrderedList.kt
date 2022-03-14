@@ -26,7 +26,7 @@ fun OrderedList(
     Log.d("OrderedList", items.toString())
     Log.d("OrderedList", items.isNotEmpty().toString())
 
-    Column() {
+    Column {
         if (items.isNotEmpty() && items[0].isNotBlank()) {
             Text(
                 modifier = Modifier.padding(bottom = SMALL_PADDING),
