@@ -12,5 +12,4 @@ class SearchHeroesUseCase(
     operator fun invoke(query: String): Flow<PagingData<HeroEntity>> {
         return repository.searchHeroes(query = query)
     }
-
 }

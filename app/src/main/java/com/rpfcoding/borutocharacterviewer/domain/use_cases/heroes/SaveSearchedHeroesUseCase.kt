@@ -3,11 +3,11 @@ package com.rpfcoding.borutocharacterviewer.domain.use_cases.heroes
 import com.rpfcoding.borutocharacterviewer.data.local.entity.HeroEntity
 import com.rpfcoding.borutocharacterviewer.domain.repository.LocalHeroRepository
 
-class GetSelectedHeroUseCase(
+class SaveSearchedHeroesUseCase(
     private val repository: LocalHeroRepository
 ) {
 
-    operator fun invoke(heroId: Int): HeroEntity {
-        return repository.getSelectedHero(heroId = heroId)
+    suspend operator fun invoke(heroes: List<HeroEntity>) {
+        repository.addHeroes(heroes = heroes)
     }
 }

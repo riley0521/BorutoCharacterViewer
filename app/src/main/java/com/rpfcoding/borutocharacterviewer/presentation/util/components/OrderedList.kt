@@ -1,6 +1,7 @@
 package com.rpfcoding.borutocharacterviewer.presentation.util.components
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ContentAlpha
@@ -22,8 +23,11 @@ fun OrderedList(
     textColor: Color
 ) {
 
+    Log.d("OrderedList", items.toString())
+    Log.d("OrderedList", items.isNotEmpty().toString())
+
     Column() {
-        if(items.isNotEmpty()) {
+        if (items.isNotEmpty() && items[0].isNotBlank()) {
             Text(
                 modifier = Modifier.padding(bottom = SMALL_PADDING),
                 text = title,
@@ -31,8 +35,10 @@ fun OrderedList(
                 fontSize = MaterialTheme.typography.subtitle1.fontSize,
                 fontWeight = FontWeight.Bold
             )
+        }
 
-            items.forEachIndexed { index, item ->
+        items.forEachIndexed { index, item ->
+            if (item.isNotBlank()) {
                 Text(
                     modifier = Modifier.alpha(ContentAlpha.medium),
                     text = "${index + 1}. $item",
@@ -40,17 +46,8 @@ fun OrderedList(
                     fontSize = MaterialTheme.typography.body1.fontSize,
                 )
             }
-        } else {
-            Text(
-                modifier = Modifier.padding(bottom = SMALL_PADDING),
-                text = "$title (No available information)",
-                color = textColor,
-                fontSize = MaterialTheme.typography.subtitle1.fontSize,
-                fontWeight = FontWeight.Bold
-            )
         }
     }
-
 }
 
 @Preview(showBackground = true)

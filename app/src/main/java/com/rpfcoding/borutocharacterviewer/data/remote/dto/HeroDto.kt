@@ -15,10 +15,10 @@ data class HeroDto(
     val age: Int,
     val month: String,
     val day: String,
-    val abilities: List<String> = listOf(),
-    val heightBasedOnAge: List<String> = listOf(),
-    val species: List<String> = listOf(),
-    val family: List<String> = listOf(),
+    val abilities: List<String> = emptyList(),
+    val heightBasedOnAge: List<String> = emptyList(),
+    val species: List<String> = emptyList(),
+    val family: List<String> = emptyList(),
     val shinobiRecord: ShinobiRecordDto = ShinobiRecordDto()
 ) {
     fun toHeroEntity(): HeroEntity {

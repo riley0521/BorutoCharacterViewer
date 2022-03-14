@@ -7,6 +7,7 @@ import com.rpfcoding.borutocharacterviewer.domain.repository.MyPreferencesReposi
 import com.rpfcoding.borutocharacterviewer.domain.repository.RemoteDataSource
 import com.rpfcoding.borutocharacterviewer.domain.use_cases.heroes.GetAllHeroesUseCase
 import com.rpfcoding.borutocharacterviewer.domain.use_cases.heroes.GetSelectedHeroUseCase
+import com.rpfcoding.borutocharacterviewer.domain.use_cases.heroes.SaveSearchedHeroesUseCase
 import com.rpfcoding.borutocharacterviewer.domain.use_cases.heroes.SearchHeroesUseCase
 import com.rpfcoding.borutocharacterviewer.domain.use_cases.on_boarding.OnBoardingUseCases
 import com.rpfcoding.borutocharacterviewer.domain.use_cases.on_boarding.ReadOnBoardingUseCase
@@ -65,6 +66,16 @@ object RepositoryModule {
         repository: LocalHeroRepository
     ): GetSelectedHeroUseCase {
         return GetSelectedHeroUseCase(
+            repository = repository
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideSaveSearchedHeroesUseCase(
+        repository: LocalHeroRepository
+    ): SaveSearchedHeroesUseCase {
+        return SaveSearchedHeroesUseCase(
             repository = repository
         )
     }

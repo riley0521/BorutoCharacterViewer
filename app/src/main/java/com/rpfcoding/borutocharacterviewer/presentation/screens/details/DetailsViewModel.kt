@@ -1,8 +1,6 @@
 package com.rpfcoding.borutocharacterviewer.presentation.screens.details
 
 import android.util.Log
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,7 +9,9 @@ import com.rpfcoding.borutocharacterviewer.domain.use_cases.heroes.GetSelectedHe
 import com.rpfcoding.borutocharacterviewer.util.Constants.DETAILS_ARG_KEY
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,8 +22,14 @@ class DetailsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val _selectedHero:MutableStateFlow<HeroEntity?> = MutableStateFlow(null)
+    private val _selectedHero: MutableStateFlow<HeroEntity?> = MutableStateFlow(null)
     val selectedHero: StateFlow<HeroEntity?> = _selectedHero
+
+    private val _colorPalette = MutableStateFlow<Map<String, String>>(mapOf())
+    val colorPalette: StateFlow<Map<String, String>> = _colorPalette
+
+    private val _event: MutableSharedFlow<UiEvent> = MutableSharedFlow()
+    val event: SharedFlow<UiEvent> = _event
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
@@ -35,4 +41,17 @@ class DetailsViewModel @Inject constructor(
         }
     }
 
+    fun generateColorPalette() {
+        viewModelScope.launch {
+            _event.emit(UiEvent.GenerateColorPalette)
+        }
+    }
+
+    fun setColorPalette(colors: Map<String, String>) {
+        _colorPalette.value = colors
+    }
+}
+
+sealed class UiEvent {
+    object GenerateColorPalette : UiEvent()
 }

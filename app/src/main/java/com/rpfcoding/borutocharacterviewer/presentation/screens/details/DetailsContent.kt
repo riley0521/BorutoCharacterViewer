@@ -1,5 +1,6 @@
 package com.rpfcoding.borutocharacterviewer.presentation.screens.details
 
+import android.graphics.Color.parseColor
 import android.util.Log
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.Image
@@ -11,8 +12,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.rpfcoding.borutocharacterviewer.R
 import com.rpfcoding.borutocharacterviewer.data.local.entity.HeroEntity
 import com.rpfcoding.borutocharacterviewer.data.remote.dto.ShinobiRecordDto
@@ -60,8 +61,30 @@ val BottomSheetScaffoldState.currentSheetFraction: Float
 @Composable
 fun DetailsContent(
     navController: NavController,
-    selectedHero: HeroEntity?
+    selectedHero: HeroEntity?,
+    colors: Map<String, String>
 ) {
+
+    var vibrant by remember {
+        mutableStateOf("#000000")
+    }
+    var darkVibrant by remember {
+        mutableStateOf("#000000")
+    }
+    var onDarkVibrant by remember {
+        mutableStateOf("#FFFFFF")
+    }
+
+    LaunchedEffect(key1 = selectedHero) {
+        vibrant = colors["vibrant"]!!
+        darkVibrant = colors["darkVibrant"]!!
+        onDarkVibrant = colors["onDarkVibrant"]!!
+    }
+
+    val systemUiController = rememberSystemUiController()
+    systemUiController.setStatusBarColor(
+        color = Color(parseColor(darkVibrant))
+    )
 
     val scaffoldState = rememberBottomSheetScaffoldState(
         bottomSheetState = rememberBottomSheetState(initialValue = BottomSheetValue.Collapsed)
@@ -81,14 +104,21 @@ fun DetailsContent(
         scaffoldState = scaffoldState,
         sheetPeekHeight = BOTTOM_SHEET_PEEK_HEIGHT,
         sheetContent = {
-            selectedHero?.let { BottomSheetContent(selectedHero = it) }
+            selectedHero?.let {
+                BottomSheetContent(
+                    selectedHero = it,
+                    infoBoxIconColor = Color(parseColor(vibrant)),
+                    sheetBackgroundColor = Color(parseColor(darkVibrant)),
+                    contentColor = Color(parseColor(onDarkVibrant))
+                )
+            }
         },
         content = {
             selectedHero?.let {
                 BackgroundContent(
                     heroImage = it.image,
                     imageFraction = currentSheetFraction,
-                    backgroundColor = MaterialTheme.colors.surface,
+                    backgroundColor = Color(parseColor(darkVibrant)),
                     onCloseClick = {
                         navController.popBackStack()
                     }
@@ -192,20 +222,26 @@ fun BottomSheetContent(
                 .padding(bottom = MEDIUM_PADDING),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            InfoBox(
-                icon = painterResource(id = R.drawable.ic_cake),
-                iconColor = infoBoxIconColor,
-                bigText = "${selectedHero.month} ${selectedHero.day}",
-                smallText = stringResource(R.string.birthday),
-                textColor = contentColor
-            )
-            InfoBox(
-                icon = painterResource(id = R.drawable.ic_calendar),
-                iconColor = infoBoxIconColor,
-                bigText = selectedHero.age.toString(),
-                smallText = stringResource(R.string.age),
-                textColor = contentColor
-            )
+            if (selectedHero.month.isNotEmpty() && selectedHero.day.isNotEmpty()) {
+                InfoBox(
+                    icon = painterResource(id = R.drawable.ic_cake),
+                    iconColor = infoBoxIconColor,
+                    bigText = "${selectedHero.month} ${selectedHero.day}",
+                    smallText = stringResource(R.string.birthday),
+                    textColor = contentColor
+                )
+            }
+
+            if (selectedHero.age > 0) {
+                InfoBox(
+                    icon = painterResource(id = R.drawable.ic_calendar),
+                    iconColor = infoBoxIconColor,
+                    bigText = selectedHero.age.toString(),
+                    smallText = stringResource(R.string.age),
+                    textColor = contentColor
+                )
+            }
+
             InfoBox(
                 icon = painterResource(id = R.drawable.ic_bolt),
                 iconColor = infoBoxIconColor,
