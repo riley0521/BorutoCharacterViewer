@@ -11,10 +11,9 @@ import com.rpfcoding.borutocharacterviewer.data.local.entity.HeroRemoteKeyEntity
 import com.rpfcoding.borutocharacterviewer.data.remote.BorutoApi
 import com.rpfcoding.borutocharacterviewer.domain.repository.LocalHeroRemoteKeyRepository
 import com.rpfcoding.borutocharacterviewer.domain.repository.LocalHeroRepository
-import javax.inject.Inject
 
 @ExperimentalPagingApi
-class HeroRemoteMediator @Inject constructor(
+class HeroRemoteMediator(
     private val borutoApi: BorutoApi,
     private val borutoDatabase: BorutoDatabase,
     private val localHeroRepository: LocalHeroRepository,
@@ -39,7 +38,7 @@ class HeroRemoteMediator @Inject constructor(
 
         // Compare diffInMinutes and cacheTimeoutInMinutes
         // to determine whether to fetch new data from server or not.
-        return if(diffInMinutes <= cacheTimeoutInMinutes) {
+        return if (diffInMinutes <= cacheTimeoutInMinutes) {
             InitializeAction.SKIP_INITIAL_REFRESH
         } else {
             InitializeAction.LAUNCH_INITIAL_REFRESH
@@ -49,7 +48,7 @@ class HeroRemoteMediator @Inject constructor(
     override suspend fun load(loadType: LoadType, state: PagingState<Int, HeroEntity>): MediatorResult {
         return try {
 
-            val page: Int = when(loadType) {
+            val page: Int = when (loadType) {
                 LoadType.REFRESH -> {
                     val remoteKey = getRemoteKeyClosesToCurrentPosition(state)
                     remoteKey?.nextPage?.minus(1) ?: 1
