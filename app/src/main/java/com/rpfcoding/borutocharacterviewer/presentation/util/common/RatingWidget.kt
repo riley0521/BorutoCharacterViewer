@@ -15,6 +15,8 @@ import androidx.compose.ui.graphics.drawscope.scale
 import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.graphics.vector.PathParser
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -86,7 +88,12 @@ fun FilledStar(
     scaleFactor: Float
 ) {
 
-    Canvas(modifier = Modifier.size(24.dp)) {
+    Canvas(
+        modifier = Modifier.size(24.dp)
+            .semantics {
+                contentDescription = "FilledStar"
+            }
+    ) {
         val canvasSize = this.size
 
         scale(scale = scaleFactor) {
@@ -116,7 +123,12 @@ fun HalfFilledStar(
     scaleFactor: Float
 ) {
 
-    Canvas(modifier = Modifier.size(24.dp)) {
+    Canvas(
+        modifier = Modifier.size(24.dp)
+            .semantics {
+                contentDescription = "HalfFilledStar"
+            }
+    ) {
         val canvasSize = this.size
 
         scale(scale = scaleFactor) {
@@ -155,7 +167,12 @@ fun EmptyStar(
     scaleFactor: Float
 ) {
 
-    Canvas(modifier = Modifier.size(24.dp)) {
+    Canvas(
+        modifier = Modifier.size(24.dp)
+            .semantics {
+                contentDescription = "EmptyStar"
+            }
+    ) {
         val canvasSize = this.size
 
         scale(scale = scaleFactor) {
