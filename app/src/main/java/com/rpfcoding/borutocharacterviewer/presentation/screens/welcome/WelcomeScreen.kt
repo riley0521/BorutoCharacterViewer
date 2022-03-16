@@ -25,7 +25,7 @@ import com.google.accompanist.pager.*
 import com.rpfcoding.borutocharacterviewer.R
 import com.rpfcoding.borutocharacterviewer.domain.model.OnBoardingPage
 import com.rpfcoding.borutocharacterviewer.presentation.util.Screen
-import com.rpfcoding.borutocharacterviewer.presentation.theme.*
+import com.rpfcoding.borutocharacterviewer.ui.theme.*
 
 @ExperimentalAnimationApi
 @ExperimentalPagerApi

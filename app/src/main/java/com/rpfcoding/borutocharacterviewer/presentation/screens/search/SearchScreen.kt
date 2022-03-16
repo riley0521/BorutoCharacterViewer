@@ -9,7 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.annotation.ExperimentalCoilApi
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.rpfcoding.borutocharacterviewer.presentation.theme.statusBarColor
+import com.rpfcoding.borutocharacterviewer.ui.theme.statusBarColor
 import com.rpfcoding.borutocharacterviewer.presentation.util.common.ListContent
 import com.rpfcoding.borutocharacterviewer.util.ConnectionState
 import com.rpfcoding.borutocharacterviewer.util.ToastManager

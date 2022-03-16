@@ -30,9 +30,9 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.rpfcoding.borutocharacterviewer.R
 import com.rpfcoding.borutocharacterviewer.data.local.entity.HeroEntity
 import com.rpfcoding.borutocharacterviewer.data.remote.dto.ShinobiRecordDto
-import com.rpfcoding.borutocharacterviewer.presentation.theme.*
-import com.rpfcoding.borutocharacterviewer.presentation.util.components.InfoBox
-import com.rpfcoding.borutocharacterviewer.presentation.util.components.OrderedList
+import com.rpfcoding.borutocharacterviewer.ui.theme.*
+import com.rpfcoding.borutocharacterviewer.presentation.util.common.InfoBox
+import com.rpfcoding.borutocharacterviewer.presentation.util.common.OrderedList
 import com.rpfcoding.borutocharacterviewer.util.Constants.BASE_URL
 import com.rpfcoding.borutocharacterviewer.util.Constants.MIN_BACKGROUND_IMAGE_HEIGHT
 

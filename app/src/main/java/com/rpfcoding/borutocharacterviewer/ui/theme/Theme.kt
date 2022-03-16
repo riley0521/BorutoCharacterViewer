@@ -1,4 +1,4 @@
-package com.rpfcoding.borutocharacterviewer.presentation.theme
+package com.rpfcoding.borutocharacterviewer.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

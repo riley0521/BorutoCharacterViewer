@@ -1,4 +1,4 @@
-package com.rpfcoding.borutocharacterviewer.presentation.util.components
+package com.rpfcoding.borutocharacterviewer.presentation.util.common
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Column
@@ -20,9 +20,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.rpfcoding.borutocharacterviewer.R
-import com.rpfcoding.borutocharacterviewer.presentation.theme.INFO_BOX_ICON_SIZE
-import com.rpfcoding.borutocharacterviewer.presentation.theme.SMALL_PADDING
-import com.rpfcoding.borutocharacterviewer.presentation.theme.titleColor
+import com.rpfcoding.borutocharacterviewer.ui.theme.INFO_BOX_ICON_SIZE
+import com.rpfcoding.borutocharacterviewer.ui.theme.SMALL_PADDING
+import com.rpfcoding.borutocharacterviewer.ui.theme.titleColor
 
 @Composable
 fun InfoBox(

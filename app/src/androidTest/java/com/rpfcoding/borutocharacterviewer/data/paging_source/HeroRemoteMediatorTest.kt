@@ -8,7 +8,6 @@ import androidx.paging.RemoteMediator.MediatorResult
 import androidx.test.core.app.ApplicationProvider
 import com.rpfcoding.borutocharacterviewer.data.local.BorutoDatabase
 import com.rpfcoding.borutocharacterviewer.data.local.entity.HeroEntity
-import com.rpfcoding.borutocharacterviewer.data.remote.BorutoApi
 import com.rpfcoding.borutocharacterviewer.data.remote.FakeBorutoApi2
 import com.rpfcoding.borutocharacterviewer.domain.repository.FakeLocalHeroRemoteKeyRepository
 import com.rpfcoding.borutocharacterviewer.domain.repository.FakeLocalHeroRepository

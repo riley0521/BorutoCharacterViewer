@@ -1,4 +1,4 @@
-package com.rpfcoding.borutocharacterviewer.presentation.util.components
+package com.rpfcoding.borutocharacterviewer.presentation.util.common
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.util.Log
@@ -13,8 +13,8 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import com.rpfcoding.borutocharacterviewer.presentation.theme.SMALL_PADDING
-import com.rpfcoding.borutocharacterviewer.presentation.theme.titleColor
+import com.rpfcoding.borutocharacterviewer.ui.theme.SMALL_PADDING
+import com.rpfcoding.borutocharacterviewer.ui.theme.titleColor
 
 @Composable
 fun OrderedList(
