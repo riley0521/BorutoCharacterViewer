@@ -19,4 +19,10 @@
     <string name="height_based_on_age">Height Based On Age</string>
     <string name="abilities">Abilities</string>
     <string name="status">Status(Current Series): %s</string>
+    <string name="species">Species: %s</string>
+    <string name="shinobi_record">Shinobi Record</string>
+    <string name="rank">"Rank: "</string>
+    <string name="specialty">"Specialty: "</string>
+    <string name="registration_no">"Registration No: "</string>
+    <string name="team">"Team: "</string>
 </resources>

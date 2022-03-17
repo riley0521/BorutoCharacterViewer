@@ -1,12 +1,8 @@
 
-~
-Napp/src/main/java/com/rpfcoding/borutocharacterviewer/util/PaletteGenerator.kt,c\2\c2992a81b0dae7aa12e4c6ac0a5f5a08bc874c17
 Ž
 ^app/src/main/java/com/rpfcoding/borutocharacterviewer/domain/repository/LocalHeroRepository.kt,1\7\17ff65b93afbbbc4ccbd6835bd1ea06cb0aeb454
 …
 Uapp/src/main/java/com/rpfcoding/borutocharacterviewer/data/local/dao/HeroEntityDao.kt,b\1\b1268fb79cec9f8d61e005ca10066ddd7286380a
-‰
-Yapp/src/main/java/com/rpfcoding/borutocharacterviewer/data/remote/dto/ShinobiRecordDto.kt,e\e\eeb0d92b73b0271c17a080cd4a91a335a6a54099
 –
 fapp/src/main/java/com/rpfcoding/borutocharacterviewer/presentation/screens/details/DetailsViewModel.kt,2\e\2ebb1bfdbc22109a8d5a2c7d7794e506667199c9
 ”
@@ -15,16 +11,12 @@ dapp/src/main/java/com/rpfcoding/borutocharacterviewer/domain/use_cases/heroes/S
 japp/src/main/java/com/rpfcoding/borutocharacterviewer/domain/use_cases/heroes/SaveSearchedHeroesUseCase.kt,d\7\d71eb5886dfda782eba2f3a922d5bdb24bdca51f
 “
 capp/src/main/java/com/rpfcoding/borutocharacterviewer/presentation/screens/details/DetailsScreen.kt,1\3\13b4bf72ee26769102a3de24c4e4ddefdca08c79
-…
-Uapp/src/main/java/com/rpfcoding/borutocharacterviewer/data/local/entity/HeroEntity.kt,9\6\967a237737263d5b28e4de297daa615d7ed89190
 |
 Lapp/src/main/java/com/rpfcoding/borutocharacterviewer/di/RepositoryModule.kt,6\3\636ec75d7ca59bbbdd4ef3f8e5ae11f8458b12b1
 €
 Papp/src/main/java/com/rpfcoding/borutocharacterviewer/data/remote/dto/HeroDto.kt,c\c\cce5ab482f4e3d283050c4aeb9fa73e519c97771
 ”
 dapp/src/main/java/com/rpfcoding/borutocharacterviewer/presentation/screens/search/SearchViewModel.kt,4\2\42c6ca41905c14137864e7353d2c5f250b9a9653
-ƒ
-Sapp/src/main/java/com/rpfcoding/borutocharacterviewer/presentation/util/NavGraph.kt,f\9\f9dd65c952c3139bb390c1f1bbf7797b8025f644
 z
 Japp/src/main/java/com/rpfcoding/borutocharacterviewer/util/ToastManager.kt,9\7\970e275bb87e635cafab00d8ea7d9bfe332d07d0
 …
@@ -73,8 +65,6 @@ capp/src/main/java/com/rpfcoding/borutocharacterviewer/presentation/screens/welc
 ^app/src/main/java/com/rpfcoding/borutocharacterviewer/presentation/util/common/SearchWidget.kt,5\c\5c3aa120f78e5b94a66f89249eb42edc3f2aed40
 ™
 iapp/src/androidTest/java/com/rpfcoding/borutocharacterviewer/data/paging_source/HeroRemoteMediatorTest.kt,8\0\80a361b68395ec2b11ead82caa13cb4e4f6aea7a
-u
-Eapp/src/main/java/com/rpfcoding/borutocharacterviewer/MainActivity.kt,5\d\5d5df83c08042cd2ed2910d0c3cb44adefdd40a6
 w
 Gapp/src/main/java/com/rpfcoding/borutocharacterviewer/ui/theme/Shape.kt,f\3\f3be2ef65ed64661f7364b6fa7434672e6e438a1
 w
@@ -93,8 +83,6 @@ iapp/src/androidTest/java/com/rpfcoding/borutocharacterviewer/presentation/util/
 iapp/src/androidTest/java/com/rpfcoding/borutocharacterviewer/presentation/util/common/RatingWidgetTest.kt,a\e\ae0c8947c84b21a291ae89d07bb425dced0a1f2c
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-‘
-aapp/src/main/java/com/rpfcoding/borutocharacterviewer/presentation/screens/splash/SplashScreen.kt,b\3\b3a3dd6247155603921cf4e11b2829bb2fa8b1c2
 
 ]app/src/main/java/com/rpfcoding/borutocharacterviewer/presentation/screens/home/HomeScreen.kt,b\5\b5c405fb3d7aafaceb39a0aea74c8772b44a2d88
 ‘

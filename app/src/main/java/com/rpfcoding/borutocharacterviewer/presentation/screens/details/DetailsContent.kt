@@ -282,6 +282,18 @@ fun BottomSheetContent(
             fontWeight = FontWeight.Bold
         )
 
+        if (selectedHero.species.isNotEmpty() && selectedHero.species[0].isNotBlank()) {
+            Text(
+                modifier = Modifier
+                    .padding(bottom = SMALL_PADDING)
+                    .fillMaxWidth(),
+                text = stringResource(R.string.species, selectedHero.species[0]),
+                color = contentColor,
+                fontSize = MaterialTheme.typography.subtitle1.fontSize,
+                fontWeight = FontWeight.Bold
+            )
+        }
+
         if (selectedHero.family.isNotEmpty()) {
             OrderedList(
                 title = stringResource(R.string.family),
@@ -309,6 +321,110 @@ fun BottomSheetContent(
                 textColor = contentColor
             )
             Spacer(modifier = Modifier.height(SMALL_PADDING))
+        }
+
+        ShinobiRecordContent(
+            shinobiRecordDto = selectedHero.shinobiRecord,
+            contentColor = contentColor
+        )
+    }
+}
+
+@Composable
+fun ShinobiRecordContent(
+    shinobiRecordDto: ShinobiRecordDto,
+    contentColor: Color
+) {
+    Text(
+        modifier = Modifier
+            .padding(bottom = SMALL_PADDING)
+            .fillMaxWidth(),
+        text = stringResource(R.string.shinobi_record),
+        color = contentColor,
+        fontSize = MaterialTheme.typography.subtitle1.fontSize,
+        fontWeight = FontWeight.Bold
+    )
+    Column(
+        modifier = Modifier.padding(start = MEDIUM_PADDING)
+    ) {
+        Row() {
+            Text(
+                modifier = Modifier
+                    .padding(bottom = SMALL_PADDING),
+                text = stringResource(R.string.rank),
+                color = contentColor,
+                fontSize = MaterialTheme.typography.subtitle1.fontSize,
+                fontWeight = FontWeight.Bold
+            )
+
+            Text(
+                modifier = Modifier
+                    .padding(bottom = SMALL_PADDING),
+                text = shinobiRecordDto.rank,
+                color = contentColor,
+                fontSize = MaterialTheme.typography.subtitle1.fontSize,
+            )
+        }
+
+        Row() {
+            Text(
+                modifier = Modifier
+                    .padding(bottom = SMALL_PADDING),
+                text = stringResource(R.string.specialty),
+                color = contentColor,
+                fontSize = MaterialTheme.typography.subtitle1.fontSize,
+                fontWeight = FontWeight.Bold
+            )
+
+            Text(
+                modifier = Modifier
+                    .padding(bottom = SMALL_PADDING),
+                text = shinobiRecordDto.specialty,
+                color = contentColor,
+                fontSize = MaterialTheme.typography.subtitle1.fontSize,
+            )
+        }
+
+        Row() {
+            Text(
+                modifier = Modifier
+                    .padding(bottom = SMALL_PADDING),
+                text = stringResource(R.string.registration_no),
+                color = contentColor,
+                fontSize = MaterialTheme.typography.subtitle1.fontSize,
+                fontWeight = FontWeight.Bold
+            )
+
+            Text(
+                modifier = Modifier
+                    .padding(bottom = SMALL_PADDING),
+                text = shinobiRecordDto.registrationNo,
+                color = contentColor,
+                fontSize = MaterialTheme.typography.subtitle1.fontSize,
+            )
+        }
+
+        Row() {
+            Text(
+                modifier = Modifier
+                    .padding(bottom = SMALL_PADDING),
+                text = stringResource(R.string.team),
+                color = contentColor,
+                fontSize = MaterialTheme.typography.subtitle1.fontSize,
+                fontWeight = FontWeight.Bold
+            )
+
+            Text(
+                modifier = Modifier
+                    .padding(bottom = SMALL_PADDING),
+                text = if (shinobiRecordDto.team.isNotEmpty() && shinobiRecordDto.team[0].isNotBlank()) {
+                    shinobiRecordDto.team.joinToString(separator = ", ")
+                } else {
+                    "N/A"
+                },
+                color = contentColor,
+                fontSize = MaterialTheme.typography.subtitle1.fontSize,
+            )
         }
     }
 }
