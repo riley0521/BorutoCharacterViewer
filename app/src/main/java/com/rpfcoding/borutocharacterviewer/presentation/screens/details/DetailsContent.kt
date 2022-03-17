@@ -225,7 +225,7 @@ fun BottomSheetContent(
                 .padding(bottom = MEDIUM_PADDING),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            if (selectedHero.month.isNotEmpty() && selectedHero.day.isNotEmpty()) {
+            if (!selectedHero.month.contains("N/A") || !selectedHero.day.contains("N/A")) {
                 InfoBox(
                     icon = painterResource(id = R.drawable.ic_cake),
                     iconColor = infoBoxIconColor,
@@ -270,6 +270,16 @@ fun BottomSheetContent(
             color = contentColor,
             fontSize = MaterialTheme.typography.body1.fontSize,
             textAlign = TextAlign.Justify
+        )
+
+        Text(
+            modifier = Modifier
+                .padding(bottom = SMALL_PADDING)
+                .fillMaxWidth(),
+            text = stringResource(R.string.status, selectedHero.status),
+            color = contentColor,
+            fontSize = MaterialTheme.typography.subtitle1.fontSize,
+            fontWeight = FontWeight.Bold
         )
 
         if (selectedHero.family.isNotEmpty()) {

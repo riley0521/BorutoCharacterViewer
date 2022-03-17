@@ -18,4 +18,5 @@
     <string name="family">Family</string>
     <string name="height_based_on_age">Height Based On Age</string>
     <string name="abilities">Abilities</string>
+    <string name="status">Status(Current Series): %s</string>
 </resources>

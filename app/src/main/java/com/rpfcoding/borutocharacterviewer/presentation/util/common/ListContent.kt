@@ -3,8 +3,12 @@ package com.rpfcoding.borutocharacterviewer.presentation.util.common
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.MaterialTheme
@@ -42,8 +46,13 @@ fun ListContent(
 
     val result = handlePagingResult(heroes = heroes)
 
+    val lazyListState = rememberLazyListState()
+    val scrollState = rememberScrollState()
+
     if (result) {
         LazyColumn(
+            modifier = Modifier.scrollable(scrollState, Orientation.Vertical),
+            state = lazyListState,
             contentPadding = PaddingValues(all = SMALL_PADDING),
             verticalArrangement = Arrangement.spacedBy(space = SMALL_PADDING)
         ) {
