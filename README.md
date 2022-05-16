@@ -4,6 +4,7 @@ This application is created with custom server using Ktor deployed in Heroku: ht
 
 ## Tech stack:
 - Jetpack Libraries: Navigation Architecture, Dagger Hilt, Room Database
+- Jetpack Compose with Google Accompanist libraries: Swipe to refresh, horizontal pager
 - Retrofit
 - OkHttp
 - KotlinX Serialization
