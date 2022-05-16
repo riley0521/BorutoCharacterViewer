@@ -1,5 +1,7 @@
 # BorutoCharacterViewer
 
+This application is created with custom server using Ktor deployed in Heroku: https://boruto-character-viewer-server.herokuapp.com/
+
 ## Tech stack:
 - Jetpack Libraries: Navigation Architecture, Dagger Hilt, Room Database
 - Retrofit
